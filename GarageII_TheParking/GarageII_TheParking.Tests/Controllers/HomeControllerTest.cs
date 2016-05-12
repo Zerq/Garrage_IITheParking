@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GarrageII_TheParking;
-using GarrageII_TheParking.Controllers;
+using GarageII_TheParking;
+using GarageII_TheParking.Controllers;
 
-namespace GarrageII_TheParking.Tests.Controllers {
+namespace GarageII_TheParking.Tests.Controllers {
     [TestClass]
     public class HomeControllerTest {
         [TestMethod]

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarrageII_TheParking", "GarrageII_TheParking\GarrageII_TheParking.csproj", "{8581657F-C163-401B-97A3-F12887E1B23C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageII_TheParking", "GarageII_TheParking\GarageII_TheParking.csproj", "{8581657F-C163-401B-97A3-F12887E1B23C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarrageII_TheParking.Tests", "GarrageII_TheParking.Tests\GarrageII_TheParking.Tests.csproj", "{225C2529-3D29-4FF9-A0B5-4039717054F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarageII_TheParking.Tests", "GarageII_TheParking.Tests\GarageII_TheParking.Tests.csproj", "{225C2529-3D29-4FF9-A0B5-4039717054F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

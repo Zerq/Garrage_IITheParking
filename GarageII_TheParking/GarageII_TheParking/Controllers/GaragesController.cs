@@ -18,7 +18,7 @@ namespace GarageII_TheParking.Controllers
         // GET: Garages
         public ActionResult Index()
         {
-            return View(db.Vehicles.ToList());
+            return View(db.Garage.ToList());
         }
 
         // GET: Garages/Details/5
@@ -28,7 +28,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.Vehicles.Find(id);
+            Garage garage = db.Garage.Find(id);
             if (garage == null)
             {
                 return HttpNotFound();
@@ -47,12 +47,12 @@ namespace GarageII_TheParking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id")] Garage garage)
+        public ActionResult Create([Bind(Include = "Id,Name")] Garage garage)
         {
             if (ModelState.IsValid)
             {
                 garage.Id = Guid.NewGuid();
-                db.Vehicles.Add(garage);
+                db.Garage.Add(garage);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.Vehicles.Find(id);
+            Garage garage = db.Garage.Find(id);
             if (garage == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace GarageII_TheParking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id")] Garage garage)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Garage garage)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Garage garage = db.Vehicles.Find(id);
+            Garage garage = db.Garage.Find(id);
             if (garage == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace GarageII_TheParking.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Garage garage = db.Vehicles.Find(id);
-            db.Vehicles.Remove(garage);
+            Garage garage = db.Garage.Find(id);
+            db.Garage.Remove(garage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

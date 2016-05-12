@@ -9,8 +9,8 @@ namespace GarageII_TheParking.DataAccessLayer {
 
         public Context() : base("DefaultConnection") {}
 
-            public DbSet<Models.Garage> Vehicles { get; set; }
-            public DbSet<Models.Vehicle> Garages { get; set; }
+            public DbSet<Models.Vehicle> Vehicle { get; set; }
+            public DbSet<Models.Garage> Garage { get; set; }
 
     }
 

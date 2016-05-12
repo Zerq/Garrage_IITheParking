@@ -18,7 +18,7 @@ namespace GarageII_TheParking.Controllers
         // GET: Vehicles
         public ActionResult Index()
         {
-            return View(db.Garages.ToList());
+            return View(db.Vehicle.ToList());
         }
 
         // GET: Vehicles/Details/5
@@ -28,7 +28,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vehicle vehicle = db.Garages.Find(id);
+            Vehicle vehicle = db.Vehicle.Find(id);
             if (vehicle == null)
             {
                 return HttpNotFound();
@@ -52,7 +52,7 @@ namespace GarageII_TheParking.Controllers
             if (ModelState.IsValid)
             {
                 vehicle.Id = Guid.NewGuid();
-                db.Garages.Add(vehicle);
+                db.Vehicle.Add(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +67,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vehicle vehicle = db.Garages.Find(id);
+            Vehicle vehicle = db.Vehicle.Find(id);
             if (vehicle == null)
             {
                 return HttpNotFound();
@@ -98,7 +98,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vehicle vehicle = db.Garages.Find(id);
+            Vehicle vehicle = db.Vehicle.Find(id);
             if (vehicle == null)
             {
                 return HttpNotFound();
@@ -111,8 +111,8 @@ namespace GarageII_TheParking.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Vehicle vehicle = db.Garages.Find(id);
-            db.Garages.Remove(vehicle);
+            Vehicle vehicle = db.Vehicle.Find(id);
+            db.Vehicle.Remove(vehicle);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

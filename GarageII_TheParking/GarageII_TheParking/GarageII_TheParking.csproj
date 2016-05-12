@@ -162,17 +162,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605121125173_Initial.cs" />
-    <Compile Include="Migrations\201605121125173_Initial.Designer.cs">
-      <DependentUpon>201605121125173_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605121148484_Added_Parkdates.cs" />
-    <Compile Include="Migrations\201605121148484_Added_Parkdates.Designer.cs">
-      <DependentUpon>201605121148484_Added_Parkdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605121202045_Added_added_name_to_garage.cs" />
-    <Compile Include="Migrations\201605121202045_Added_added_name_to_garage.Designer.cs">
-      <DependentUpon>201605121202045_Added_added_name_to_garage.cs</DependentUpon>
+    <Compile Include="Migrations\201605121335462_initial.cs" />
+    <Compile Include="Migrations\201605121335462_initial.Designer.cs">
+      <DependentUpon>201605121335462_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
@@ -182,9 +174,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08e.mdf" />
-    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08e_log.ldf">
-      <DependentUpon>aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08e.mdf</DependentUpon>
+    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f.mdf" />
+    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f_log.ldf">
+      <DependentUpon>aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -239,17 +231,17 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Garages\Create.cshtml" />
-    <Content Include="Views\Garages\Delete.cshtml" />
-    <Content Include="Views\Garages\Details.cshtml" />
-    <Content Include="Views\Garages\Edit.cshtml" />
-    <Content Include="Views\Garages\Index.cshtml" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Views\Vehicles\Create.cshtml" />
     <Content Include="Views\Vehicles\Delete.cshtml" />
     <Content Include="Views\Vehicles\Details.cshtml" />
     <Content Include="Views\Vehicles\Edit.cshtml" />
     <Content Include="Views\Vehicles\Index.cshtml" />
-    <Content Include="Scripts\jquery-2.2.3.min.map" />
+    <Content Include="Views\Garages\Create.cshtml" />
+    <Content Include="Views\Garages\Delete.cshtml" />
+    <Content Include="Views\Garages\Details.cshtml" />
+    <Content Include="Views\Garages\Edit.cshtml" />
+    <Content Include="Views\Garages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -257,14 +249,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605121125173_Initial.resx">
-      <DependentUpon>201605121125173_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121148484_Added_Parkdates.resx">
-      <DependentUpon>201605121148484_Added_Parkdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121202045_Added_added_name_to_garage.resx">
-      <DependentUpon>201605121202045_Added_added_name_to_garage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605121335462_initial.resx">
+      <DependentUpon>201605121335462_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

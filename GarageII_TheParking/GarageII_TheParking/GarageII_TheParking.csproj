@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handler\GarageHandler.cs" />
     <Compile Include="Migrations\201605121335462_initial.cs" />
     <Compile Include="Migrations\201605121335462_initial.Designer.cs">
       <DependentUpon>201605121335462_initial.cs</DependentUpon>
@@ -217,6 +218,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Diabolicle plan Mo ha ha ha ha....txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

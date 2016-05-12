@@ -8,7 +8,7 @@ namespace GarageII_TheParking.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Garages",
+                "dbo.Garage",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -17,7 +17,7 @@ namespace GarageII_TheParking.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Vehicles",
+                "dbo.Vehicle",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -32,17 +32,17 @@ namespace GarageII_TheParking.Migrations
                         Garage_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Garages", t => t.Garage_Id)
+                .ForeignKey("dbo.Garage", t => t.Garage_Id)
                 .Index(t => t.Garage_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Vehicles", "Garage_Id", "dbo.Garages");
-            DropIndex("dbo.Vehicles", new[] { "Garage_Id" });
-            DropTable("dbo.Vehicles");
-            DropTable("dbo.Garages");
+            DropForeignKey("dbo.Vehicle", "Garage_Id", "dbo.Garage");
+            DropIndex("dbo.Vehicle", new[] { "Garage_Id" });
+            DropTable("dbo.Vehicle");
+            DropTable("dbo.Garage");
         }
     }
 }

@@ -155,9 +155,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GaragesController.cs" />
+    <Compile Include="Controllers\GarageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VehiclesController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -170,7 +170,7 @@
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\Vehicle.cs" />
-    <Compile Include="Models\VehicleTypes.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,16 +232,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Vehicles\Create.cshtml" />
-    <Content Include="Views\Vehicles\Delete.cshtml" />
-    <Content Include="Views\Vehicles\Details.cshtml" />
-    <Content Include="Views\Vehicles\Edit.cshtml" />
-    <Content Include="Views\Vehicles\Index.cshtml" />
-    <Content Include="Views\Garages\Create.cshtml" />
-    <Content Include="Views\Garages\Delete.cshtml" />
-    <Content Include="Views\Garages\Details.cshtml" />
-    <Content Include="Views\Garages\Edit.cshtml" />
-    <Content Include="Views\Garages\Index.cshtml" />
+    <Content Include="Views\Vehicle\Create.cshtml" />
+    <Content Include="Views\Vehicle\Delete.cshtml" />
+    <Content Include="Views\Vehicle\Details.cshtml" />
+    <Content Include="Views\Vehicle\Edit.cshtml" />
+    <Content Include="Views\Vehicle\Index.cshtml" />
+    <Content Include="Views\Garage\Create.cshtml" />
+    <Content Include="Views\Garage\Delete.cshtml" />
+    <Content Include="Views\Garage\Details.cshtml" />
+    <Content Include="Views\Garage\Edit.cshtml" />
+    <Content Include="Views\Garage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

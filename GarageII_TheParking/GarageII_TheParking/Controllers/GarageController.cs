@@ -11,17 +11,17 @@ using GarageII_TheParking.Models;
 
 namespace GarageII_TheParking.Controllers
 {
-    public class GaragesController : Controller
+    public class GarageController : Controller
     {
         private Context db = new Context();
 
-        // GET: Garages
+        // GET: Garage
         public ActionResult Index()
         {
             return View(db.Garage.ToList());
         }
 
-        // GET: Garages/Details/5
+        // GET: Garage/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -36,13 +36,13 @@ namespace GarageII_TheParking.Controllers
             return View(garage);
         }
 
-        // GET: Garages/Create
+        // GET: Garage/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Garages/Create
+        // POST: Garage/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -60,7 +60,7 @@ namespace GarageII_TheParking.Controllers
             return View(garage);
         }
 
-        // GET: Garages/Edit/5
+        // GET: Garage/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -75,7 +75,7 @@ namespace GarageII_TheParking.Controllers
             return View(garage);
         }
 
-        // POST: Garages/Edit/5
+        // POST: Garage/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,7 +91,7 @@ namespace GarageII_TheParking.Controllers
             return View(garage);
         }
 
-        // GET: Garages/Delete/5
+        // GET: Garage/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -106,7 +106,7 @@ namespace GarageII_TheParking.Controllers
             return View(garage);
         }
 
-        // POST: Garages/Delete/5
+        // POST: Garage/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)

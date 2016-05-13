@@ -36,13 +36,15 @@ namespace GarageII_TheParking.Controllers
             }
             return View(vehicle);
         }
-        
 
-    
- 
+        public ActionResult Park() {
+            return View(new Models.Vehicle());
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand,ParkedDate,ExpectedParkOutDate,ParkOutDate")] Vehicle vehicle)
+        public ActionResult Park([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand,ParkedDate,ExpectedParkOutDate,ParkOutDate")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -56,12 +58,12 @@ namespace GarageII_TheParking.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Collect([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand,ParkedDate,ExpectedParkOutDate,ParkOutDate")] Vehicle vehicle) {
+        public ActionResult Collect([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand")] Vehicle vehicle) {
             if (ModelState.IsValid) {
                 var receipt = GarageHandler.Instance.Collect(vehicle);
                 return View(receipt);
             }
-
+           
             return View(vehicle);
         }
 

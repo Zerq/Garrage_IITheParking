@@ -157,7 +157,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GarageController.cs" />
-    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,6 +237,7 @@
     <Content Include="Views\Vehicle\Edit.cshtml" />
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Garage\Index.cshtml" />
+    <Content Include="Views\Garage\Park.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace GarageII_TheParking.Models {
-    [Flags]
+   // enum drop down not supported... i will have to look into the feacability of making something that supports flagenums later.. [Flags]
     public enum Colors {
         Brown = 0,
         DarkBrown = 1,

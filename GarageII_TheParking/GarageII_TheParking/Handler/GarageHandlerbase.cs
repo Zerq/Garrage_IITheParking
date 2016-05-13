@@ -13,7 +13,7 @@ namespace GarageII_TheParking.Handler {
        protected Context db = new Context();
 
         private Models.Garage garage;
-        protected Models.Garage Garage {
+        public Models.Garage Garage {
            get {
                 if (garage == null) {
                    garage = db.Garage.Where(n => n.Id == Guid.Empty).First();
@@ -23,8 +23,8 @@ namespace GarageII_TheParking.Handler {
         }
 
 
-        public abstract Vehicle GetDetails(Guid Key);
-
+        public abstract Vehicle GetDetails(Guid? Key);
+ 
 
         public abstract Receipt Park(Models.Vehicle vehicle);
 
@@ -41,8 +41,7 @@ namespace GarageII_TheParking.Handler {
         // a recite or something... that or chuck some annoyed badgers at the user or something....
 
 
-
-        public abstract  List<Models.Vehicle> ListParkedVehicles();
+ 
 
 
     }

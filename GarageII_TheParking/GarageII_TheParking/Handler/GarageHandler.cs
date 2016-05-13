@@ -22,6 +22,8 @@ namespace GarageII_TheParking.Handler {
 
         }
 
+
+
         public override Receipt Collect(Vehicle vehicle) {
 
             throw new NotImplementedException();
@@ -29,16 +31,13 @@ namespace GarageII_TheParking.Handler {
             //db.SaveChanges();
 
         }
-
-        public override List<Vehicle> ListParkedVehicles() {
-            throw new NotImplementedException();
-        }
+ 
 
         public override Receipt Park(Vehicle vehicle) {
             throw new NotImplementedException();
         }
 
-        public override Vehicle GetDetails(Guid Key) {
+        public override Vehicle GetDetails(Guid? Key) {
             throw new NotImplementedException();
         }
     }

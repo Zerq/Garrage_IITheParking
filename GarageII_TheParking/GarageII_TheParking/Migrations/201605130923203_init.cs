@@ -3,12 +3,12 @@ namespace GarageII_TheParking.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Garage",
+                "dbo.Garages",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -17,7 +17,7 @@ namespace GarageII_TheParking.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Vehicle",
+                "dbo.Vehicles",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -32,17 +32,17 @@ namespace GarageII_TheParking.Migrations
                         Garage_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Garage", t => t.Garage_Id)
+                .ForeignKey("dbo.Garages", t => t.Garage_Id)
                 .Index(t => t.Garage_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Vehicle", "Garage_Id", "dbo.Garage");
-            DropIndex("dbo.Vehicle", new[] { "Garage_Id" });
-            DropTable("dbo.Vehicle");
-            DropTable("dbo.Garage");
+            DropForeignKey("dbo.Vehicles", "Garage_Id", "dbo.Garages");
+            DropIndex("dbo.Vehicles", new[] { "Garage_Id" });
+            DropTable("dbo.Vehicles");
+            DropTable("dbo.Garages");
         }
     }
 }

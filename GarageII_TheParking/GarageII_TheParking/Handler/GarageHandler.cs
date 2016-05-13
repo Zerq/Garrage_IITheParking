@@ -10,7 +10,17 @@ namespace GarageII_TheParking.Handler {
 
     public class GarageHandler : GarageHandlerbase {
 
+        //Singleton
+        private GarageHandler() { }
+        private static GarageHandler instance;
+        public static GarageHandler Instance {get {
+                if (instance == null) {
+                    instance = new GarageHandler();
+                }
+                return instance;
+            }
 
+        }
 
         public override Receipt Collect(Vehicle vehicle) {
 

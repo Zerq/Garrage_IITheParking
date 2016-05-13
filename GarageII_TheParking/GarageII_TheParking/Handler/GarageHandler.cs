@@ -9,7 +9,11 @@ namespace GarageII_TheParking.Handler {
 
     public class GarageHandler : GarageHandlerbase {
         public override Receipt Collect(Vehicle vehicle) {
-            throw new NotImplementedException();
+            
+          
+            //db.Entry(Garage).State = System.Data.Entity.EntityState.Modified;
+            //db.SaveChanges();
+          
         }
 
         public override List<Vehicle> ListParkedVehicles() {

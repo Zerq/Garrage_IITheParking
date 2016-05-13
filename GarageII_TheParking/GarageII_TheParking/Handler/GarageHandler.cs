@@ -37,5 +37,9 @@ namespace GarageII_TheParking.Handler {
         public override Receipt Park(Vehicle vehicle) {
             throw new NotImplementedException();
         }
+
+        public override Vehicle GetDetails(Guid Key) {
+            throw new NotImplementedException();
+        }
     }
 }

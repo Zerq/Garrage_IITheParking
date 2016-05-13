@@ -18,7 +18,7 @@ namespace GarageII_TheParking.Controllers
         // GET: Vehicle
         public ActionResult Index()
         {
-            return View();
+            return View(Handler.GarageHandler.Instance.ListParkedVehicles());
         }
 
         // GET: Vehicle/Details/5

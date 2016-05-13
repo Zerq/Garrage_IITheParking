@@ -3,33 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GarageII_TheParking.Models;
 
 namespace GarageII_TheParking.Handler {
 
-    public class GarageHandler {
-        private Context db = new Context();
+    public class GarageHandler : GarageHandlerbase {
+        public override Receipt Collect(Vehicle vehicle) {
+            throw new NotImplementedException();
 
-        private IEnumerable<Models.Garage> GetGarage() {
-            // get our currently singular garage out of the database...
-            return db.Garage.Where(n => n.Id == Guid.Empty);
-        }
- 
-        public void Park(Models.Vehicle vehicle) {
-            // add care to garage
+           // this.GetGarage()
         }
 
-        public class DevinePunishment { }
-        public DevinePunishment Collect(Models.Vehicle vehicle) {
-            // remove car from garage
-            // and figure out some better result to return if the car was parked to long!
-            // a recite or something... that or chuck some annoyed badgers at the user or something....
-            return null;
+        public override List<Vehicle> ListParkedVehicles() {
+            throw new NotImplementedException();
         }
 
-        public List<Models.Vehicle> ListParkedVehicles() {
-            return null;
+        public override void Park(Vehicle vehicle) {
+            throw new NotImplementedException();
         }
-
-
     }
 }

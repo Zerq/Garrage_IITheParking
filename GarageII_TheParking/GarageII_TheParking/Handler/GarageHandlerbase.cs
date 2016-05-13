@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+// nåt som Kalle har kodat - Stay away
 namespace GarageII_TheParking.Handler {
 
     public abstract class GarageHandlerbase {

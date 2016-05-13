@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace GarageII_TheParking.Models {
-
+// Michael testar att kommentera från GitHub
 
     public class Vehicle {
         public Guid Id { get; set; }

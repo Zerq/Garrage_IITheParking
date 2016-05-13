@@ -27,7 +27,7 @@ namespace GarageII_TheParking.Handler {
         public abstract Vehicle GetDetails(Guid Key);
 
 
-        public abstract Receipt Park(Models.Vehicle vehicle);
+        public abstract Receipt Park(Models.Vehicle vehicle, TimeSpan paidTime);
 
        /* vehicle.ParkedDate = DateTime.Now;
             

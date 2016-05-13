@@ -22,11 +22,11 @@ namespace GarageII_TheParking.Handler {
             }
 
         }
-        
-        public override Receipt Collect(Vehicle vehicle)
-        {
-            this.Garage.Vehicle.   //uträkningen för kvittot
-            
+
+
+
+        public override Receipt Collect(Vehicle vehicle) {
+
 
 
             throw new NotImplementedException();
@@ -34,10 +34,7 @@ namespace GarageII_TheParking.Handler {
             //db.SaveChanges();
 
         }
-        //--------------------------------------------------------------
-        public override List<Vehicle> ListParkedVehicles() {
-            throw new NotImplementedException();
-        }
+ 
 
         public override Receipt Park(Vehicle vehicle, TimeSpan paidTime)
         {
@@ -47,7 +44,7 @@ namespace GarageII_TheParking.Handler {
         }
         // få ut ett kvitto 
 
-        public override Vehicle GetDetails(Guid Key) {
+        public override Vehicle GetDetails(Guid? Key) {
             throw new NotImplementedException();
         }
     }

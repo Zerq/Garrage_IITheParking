@@ -157,16 +157,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GarageController.cs" />
-    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handler\GarageHandler.cs" />
     <Compile Include="Handler\GarageHandlerbase.cs" />
-    <Compile Include="Migrations\201605121335462_initial.cs" />
-    <Compile Include="Migrations\201605121335462_initial.Designer.cs">
-      <DependentUpon>201605121335462_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201605130923203_init.cs" />
+    <Compile Include="Migrations\201605130923203_init.Designer.cs">
+      <DependentUpon>201605130923203_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
@@ -177,10 +176,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f.mdf" />
-    <Content Include="App_Data\aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f_log.ldf">
-      <DependentUpon>aspnet-Garage-e8feb8ce-98da-4723-948c-f64877b8f08f.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -241,15 +236,19 @@
     <Content Include="Views\Vehicle\Details.cshtml" />
     <Content Include="Views\Vehicle\Edit.cshtml" />
     <Content Include="Views\Vehicle\Index.cshtml" />
+    <Content Include="Views\Garage\Index.cshtml" />
+    <Content Include="Views\Garage\Park.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605121335462_initial.resx">
-      <DependentUpon>201605121335462_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605130923203_init.resx">
+      <DependentUpon>201605130923203_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

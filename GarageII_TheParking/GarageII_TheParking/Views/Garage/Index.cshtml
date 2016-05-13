@@ -1,0 +1,78 @@
+﻿@model GarageII_TheParking.Models.Garage
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Park", "Park")
+</p>
+<table class="table">
+    @{ 
+        var exampleVehicle = new GarageII_TheParking.Models.Vehicle();
+    }
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.RegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.WheelCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.ParkedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.ExpectedParkOutDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => exampleVehicle.ParkOutDate)
+        </th>
+        <th>
+   
+        </th>
+    </tr>
+
+@foreach (var item in Model.Vehicle) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WheelCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedParkOutDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParkOutDate)
+        </td>
+        <td>
+            @Html.ActionLink("Collect", "Collect", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace GarageII_TheParking.Models {
     public class Garage {
+        public Garage() {
+            this.Vehicle = new List<Models.Vehicle>();
+        }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public List<Vehicle> Vehicle { get; set; }

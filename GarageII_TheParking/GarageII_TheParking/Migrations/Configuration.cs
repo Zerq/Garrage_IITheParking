@@ -14,18 +14,10 @@ namespace GarageII_TheParking.Migrations
 
         protected override void Seed(GarageII_TheParking.DataAccessLayer.Context context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Garage.AddOrUpdate(n => n.Id,
+                new Models.Garage() { Id = Guid.Empty, Name = "Garrage II: The parking" });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+    
         }
     }
 }

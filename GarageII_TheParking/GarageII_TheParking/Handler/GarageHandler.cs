@@ -1,15 +1,19 @@
-﻿using System;
+﻿using GarageII_TheParking.DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GarageII_TheParking.Helpers {
-    public class GarageHandler {
-        private Models.Garage GetGarage() {
-            // get our currently singular garage out of the database...
-            return null;
-        }
+namespace GarageII_TheParking.Handler {
 
+    public class GarageHandler {
+        private Context db = new Context();
+
+        private IEnumerable<Models.Garage> GetGarage() {
+            // get our currently singular garage out of the database...
+            return db.Garage.Where(n => n.Id == Guid.Empty);
+        }
+ 
         public void Park(Models.Vehicle vehicle) {
             // add care to garage
         }

@@ -156,6 +156,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\GarageController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
     <Compile Include="Global.asax.cs">

@@ -17,7 +17,7 @@ namespace GarageII_TheParking.Migrations
             context.Garage.AddOrUpdate(n => n.Id,
                 new Models.Garage() { Id = Guid.Empty, Name = "Garrage II: The parking" });
 
-    
+         
         }
     }
 }

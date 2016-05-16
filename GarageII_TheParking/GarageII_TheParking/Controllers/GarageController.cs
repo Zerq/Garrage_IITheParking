@@ -14,12 +14,14 @@ namespace GarageII_TheParking.Controllers
 {
     public class GarageController : Controller
     {
-        private Context db = new Context();
+ 
 
         // GET: Garage
         public ActionResult Index()
         {
-            return View(GarageHandler.Instance.Garage);
+            var buffert =  GarageHandler.Instance.Garage;
+            buffert.Vehicle = GarageHandler.Instance.ListVehicles(buffert);
+            return View(buffert);
         }
 
         // GET: Garage/Details/5
@@ -38,24 +40,23 @@ namespace GarageII_TheParking.Controllers
         }
 
         public ActionResult Park() {
-            return View(new Models.Vehicle());
+            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle(), AmountTimeToPark = new TimeSpan() });
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Park([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand,ParkedDate,ExpectedParkOutDate,ParkOutDate")] Vehicle vehicle)
+        public ActionResult Park( Models.ViewModels.VehicleAndAmountTimeToPark viewModel)
         {
             if (ModelState.IsValid)
             {
-                var receipt = GarageHandler.Instance.Park(vehicle);
-                return View(receipt);
+                var receipt = GarageHandler.Instance.Park(viewModel.Vehicle, viewModel.AmountTimeToPark );
+                return View("Receipt", receipt);
             }
 
-            return View(vehicle);
+            return View(viewModel);
         }
-
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Collect([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand")] Vehicle vehicle) {
@@ -70,13 +71,13 @@ namespace GarageII_TheParking.Controllers
 
 
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

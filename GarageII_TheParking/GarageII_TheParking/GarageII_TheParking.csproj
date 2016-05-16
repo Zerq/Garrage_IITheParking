@@ -167,12 +167,25 @@
     <Compile Include="Migrations\201605130923203_init.Designer.cs">
       <DependentUpon>201605130923203_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605160811410_YouMomma.cs" />
+    <Compile Include="Migrations\201605160811410_YouMomma.Designer.cs">
+      <DependentUpon>201605160811410_YouMomma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605160844305_YoMommaTo.cs" />
+    <Compile Include="Migrations\201605160844305_YoMommaTo.Designer.cs">
+      <DependentUpon>201605160844305_YoMommaTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605161125268_add-migratino yomomma3.cs" />
+    <Compile Include="Migrations\201605161125268_add-migratino yomomma3.Designer.cs">
+      <DependentUpon>201605161125268_add-migratino yomomma3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Garage.cs" />
     <Compile Include="Models\ViewModels\Receipt.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleType.cs" />
+    <Compile Include="Models\ViewModels\VehicleAndAmountTimeToPark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +251,7 @@
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Garage\Index.cshtml" />
     <Content Include="Views\Garage\Park.cshtml" />
+    <None Include="Views\Garage\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,6 +263,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605130923203_init.resx">
       <DependentUpon>201605130923203_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605160811410_YouMomma.resx">
+      <DependentUpon>201605160811410_YouMomma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605160844305_YoMommaTo.resx">
+      <DependentUpon>201605160844305_YoMommaTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605161125268_add-migratino yomomma3.resx">
+      <DependentUpon>201605161125268_add-migratino yomomma3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

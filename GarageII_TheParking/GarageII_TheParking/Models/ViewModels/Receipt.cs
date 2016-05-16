@@ -7,9 +7,9 @@ namespace GarageII_TheParking.Models.ViewModels
 {
     public class Receipt
     {
-        public int TimPris { get; set; }
+        public int CostPerHour { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime PaidTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime TimeWhenPaidParkingTimeExpires { get; set; }
+        public DateTime? TimeVehicleCollected { get; set; }
     }
 } 

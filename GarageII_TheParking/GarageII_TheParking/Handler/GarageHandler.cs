@@ -9,7 +9,10 @@ using System.Web;
 
 namespace GarageII_TheParking.Handler {
 
-    public class GarageHandler : GarageHandlerbase {
+    public class GarageHandler : AbstractGarageHandler {
+
+
+
 
         //Singleton
         private GarageHandler() { }
@@ -25,7 +28,7 @@ namespace GarageII_TheParking.Handler {
 
 
 
-        public override Receipt Collect(Vehicle vehicle) {
+        public  Receipt Collect(Vehicle vehicle) {
 
 
 
@@ -35,16 +38,30 @@ namespace GarageII_TheParking.Handler {
 
         }
  
-
-        public override Receipt Park(Vehicle vehicle, TimeSpan paidTime)
+        public List<Vehicle> ListVehicles(Garage garage)
         {
+            return db.Vehicle.Where(s => s.Garage == garage).ToList();
+        }
+
+        public  Receipt Park(Vehicle vehicle, TimeSpan amountTimePaidFor)
+        {
+            vehicle.Id = Guid.NewGuid();
             this.Garage.Vehicle.Add(vehicle);
             db.Entry(this.Garage).State = EntityState.Modified;
             db.SaveChanges();
+
+            Receipt receipt = new Receipt( );
+
+            receipt.CostPerHour = this.Garage.CostPerHour;
+            receipt.StartTime = DateTime.Now ;
+            receipt.TimeWhenPaidParkingTimeExpires = receipt.StartTime.Add(amountTimePaidFor);
+            receipt.TimeVehicleCollected = null ;
+            
+            return receipt;
         }
         // få ut ett kvitto 
 
-        public override Vehicle GetDetails(Guid? Key) {
+        public  Vehicle GetDetails(Guid? Key) {
             throw new NotImplementedException();
         }
     }

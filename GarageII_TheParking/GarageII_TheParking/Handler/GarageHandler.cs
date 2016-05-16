@@ -40,7 +40,7 @@ namespace GarageII_TheParking.Handler {
  
         public List<Vehicle> ListVehicles(Garage garage)
         {
-            return db.Vehicle.Where(s => s.Garage == garage).ToList();
+            return new List<Vehicle>(); // db.Vehicle.Where(s => s.Garage == garage).ToList();
         }
 
         public  Receipt Park(Vehicle vehicle, TimeSpan amountTimePaidFor)

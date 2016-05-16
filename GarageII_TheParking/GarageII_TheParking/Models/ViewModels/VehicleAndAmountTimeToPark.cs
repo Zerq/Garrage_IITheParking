@@ -16,6 +16,5 @@ namespace GarageII_TheParking.Models.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
         public TimeSpan AmountTimeToPark { get; set; }
 
-
     }
 }

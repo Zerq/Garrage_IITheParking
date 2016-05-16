@@ -56,10 +56,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountTimeToPark , htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AmountTimeToParkTime , htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountTimeToPark, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountTimeToPark, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.AmountTimeToParkDays, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmountTimeToParkDays, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.AmountTimeToParkTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmountTimeToParkTime, "", new { @class = "text-danger" })
             </div>
         </div>
  

@@ -1,9 +1,6 @@
 ﻿@model GarageII_TheParking.Models.Vehicle 
 @{
-    ViewBag.Title = Model.RegistrationNumber ;
-    string filename = Path.GetFileName(Request.Path) + "</ br> Miso Är Bäst</ br>";
-
-    Path.GetFileName(Request.CurrentExecutionFilePath.ToLower());
+    ViewBag.Title = Model.RegistrationNumber;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -34,9 +31,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ExpectedParkOutDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkOutDate)
-            </th>
         <th>
 
         </th>
@@ -63,10 +57,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.ExpectedParkOutDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => modelItem.ParkOutDate)
-                </td>
+                </td>      
             <td>
                 @Html.ActionLink("Collect", "Collect", new { id = Model.Id })
             </td>

@@ -158,6 +158,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GarageController.cs" />
     <Compile Include="DataAccessLayer\Context.cs" />
+    <Compile Include="Extensions\MvcHtmlHelper_originalStackOverflow.cs" />
+    <Compile Include="Extensions\MvcHtmlHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -248,11 +250,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-    <Content Include="Views\Vehicle\Create.cshtml" />
-    <Content Include="Views\Vehicle\Delete.cshtml" />
-    <Content Include="Views\Vehicle\Details.cshtml" />
-    <Content Include="Views\Vehicle\Edit.cshtml" />
-    <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Garage\Index.cshtml" />
     <Content Include="Views\Garage\Park.cshtml" />
     <Content Include="Views\Garage\Details.cshtml" />

@@ -1,0 +1,73 @@
+﻿@model GarageII_TheParking.Models.Vehicle 
+@{
+    ViewBag.Title = Model.RegistrationNumber ;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Back", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.WheelCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedParkOutDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkOutDate)
+            </th>
+        <th>
+
+        </th>
+    </tr>
+
+    
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.RegistrationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Type)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => modelItem.WheelCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.ParkedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.ExpectedParkOutDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.ParkOutDate)
+                </td>
+            <td>
+                @Html.ActionLink("Collect", "Collect", new { id = Model.Id })
+            </td>
+        </tr>
+
+</table>

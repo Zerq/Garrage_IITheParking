@@ -18,8 +18,7 @@ namespace GarageII_TheParking.Models {
         public DateTime? ParkedDate { get; set; }
         public DateTime? ExpectedParkOutDate { get; set; }
         public DateTime? ParkOutDate { get; set; }
-        //[ForeignKey("Garage_Id")]
-        public Garage Garage { get; set; }
+        public Guid GarageId { get; set; }
     }
 
 

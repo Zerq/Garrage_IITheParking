@@ -1,7 +1,6 @@
-﻿@model GarageII_TheParking.Models.Garage
-
+﻿@model GarageII_TheParking.Models.ViewModels.GarageViewModel
 @{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.Garage.Name;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -43,7 +42,7 @@
         </th>
     </tr>
 
-@foreach (var item in Model.Vehicle) {
+@foreach (var item in Model.Vehicles) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Color)
@@ -70,7 +69,7 @@
             @Html.DisplayFor(modelItem => item.ParkOutDate)
         </td>
         <td>
-            @Html.ActionLink("Collect", "Collect", new { id=item.Id }) |
+            @Html.ActionLink("Collect", "Collect", new { id=item.Id}) |
         </td>
     </tr>
 }

@@ -12,6 +12,9 @@ using GarageII_TheParking.Handler;
 
 namespace GarageII_TheParking.Controllers
 {
+
+    
+
     public class GarageController : Controller
     {
  
@@ -19,9 +22,11 @@ namespace GarageII_TheParking.Controllers
         // GET: Garage
         public ActionResult Index()
         {
-            var buffert =  GarageHandler.Instance.Garage;
-            buffert.Vehicle = GarageHandler.Instance.ListVehicles(buffert);
-            return View(buffert);
+            var result = new Models.ViewModels.GarageViewModel() {
+                Garage = GarageHandler.Instance.Garage
+            };
+            result.Vehicles = GarageHandler.Instance.ListVehicles(result.Garage);            
+            return View(result);
         }
 
         // GET: Garage/Details/5
@@ -75,7 +80,7 @@ namespace GarageII_TheParking.Controllers
         {
             if (disposing)
             {
-                Handler.GarageHandler.Close();
+                Handler.GarageHandler.Close(); // handles disposing the singleton garage handler... sadly this cannot be done with idisposable due to the need to kill of teh singleton instance as well to trigger the creation of a new open dbcontext... otherwise it will end up disposed
             }
             base.Dispose(disposing);
         }

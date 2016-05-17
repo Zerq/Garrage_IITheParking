@@ -40,14 +40,14 @@ namespace GarageII_TheParking.Handler {
  
         public List<Vehicle> ListVehicles(Garage garage)
         {
-            return new List<Vehicle>(); // db.Vehicle.Where(s => s.Garage == garage).ToList();
+            return db.Vehicle.Where(n => n.GarageId == garage.Id).ToList();
         }
 
         public  Receipt Park(Vehicle vehicle, TimeSpan amountTimePaidFor)
         {
             vehicle.Id = Guid.NewGuid();
-            this.Garage.Vehicle.Add(vehicle);
-            db.Entry(this.Garage).State = EntityState.Modified;
+            vehicle.GarageId = this.Garage.Id;
+            db.Vehicle.Add(vehicle);
             db.SaveChanges();
 
             Receipt receipt = new Receipt( );

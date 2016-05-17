@@ -62,7 +62,7 @@ namespace GarageII_TheParking.Handler {
         // få ut ett kvitto 
 
         public  Vehicle GetDetails(Guid? Key) {
-            throw new NotImplementedException();
+            return db.Vehicle.Single(n => n.Id  == Key);
         }
 
         public static void Close() {

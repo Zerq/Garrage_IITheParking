@@ -12,7 +12,7 @@ namespace GarageII_TheParking.Models {
         public int? CostPerDay { get; set; }
         public int? CostPerWeek { get; set; }
         public int? CostPerMonth { get; set; }
-        public int MaxDuration { get; set; }  // hur länge man får parkera
+        public int MaxDuration { get; set; }  // hur länge man får parkera.
         // önskas implementering av gratisparkering 
 
     }

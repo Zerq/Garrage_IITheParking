@@ -2,19 +2,30 @@
 
 @{
     ViewBag.Title = "Kvitto";
+    /*Path.GetFileName(request.PhysicalPath);
+    new Uri(Request.RawUrl).Absolute.Path;
+    System.IO.Path.GetExtension();
+    System.Web.VirtualPathUtility.GetFileName();*/
+    string filename = Path.GetFileName(Request.Path) + "</ br> Miso Är Bäst</ br>";
+
+    Path.GetFileName(Request.CurrentExecutionFilePath.ToLower());
 }
 
 
-<ul>
+<dl>
 
-    <li>@Model.CostPerHour</li>
+    <dt>Cost per hour:</dt>
+    <dd>@Model.CostPerHour</dd>
 
-    <li>@Model.StartTime</li>
+    <dt>Start time</dt>
+    <dd>@Model.StartTime</dd>
 
-    <li>@Model.TimeVehicleCollected</li>
+    <dt>Vehicle collected:</dt>
+    <dd>@Html.DisplayFor(n=> n.TimeVehicleCollected)</dd>
 
-    <li>@Model.TimeWhenPaidParkingTimeExpires</li>
+    <dt>Paid until:</dt>
+    <dd>@Model.TimeWhenPaidParkingTimeExpires</dd>
 
-</ul>
+</dl>
 
-HÄMTA DA FUCKING CAR, YOU iMORgON
+Kvitto på inlämnad bil.

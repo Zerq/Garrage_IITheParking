@@ -6,7 +6,8 @@ using System.Web;
 
 namespace GarageII_TheParking.Models.ViewModels
 {
-    [System.Web.Mvc.Bind(Include = "Vehicle,AmountTimeToParkDay,AmountTimeToParkTime")]
+                                               
+       [System.Web.Mvc.Bind(Include = "Vehicle,AmountTimeToParkDays,AmountTimeToParkTime")]
     public class VehicleAndAmountTimeToPark
     {
         public Vehicle Vehicle { get; set; }

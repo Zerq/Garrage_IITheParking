@@ -12,9 +12,6 @@ using GarageII_TheParking.Handler;
 
 namespace GarageII_TheParking.Controllers
 {
-
-    
-
     public class GarageController : Controller
     {
  
@@ -45,7 +42,7 @@ namespace GarageII_TheParking.Controllers
         }
 
         public ActionResult Park() {
-            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle(), AmountTimeToParkDays = 0, AmountTimeToParkTime = new TimeSpan() });
+            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle() AmountTimeToPark = new TimeSpan() });
         }
 
 
@@ -55,8 +52,8 @@ namespace GarageII_TheParking.Controllers
         {
             if (ModelState.IsValid)
             {
-                var apelsin = GarageHandler.Instance.Park(viewModel.Vehicle, new TimeSpan (viewModel.AmountTimeToParkDays, viewModel.AmountTimeToParkTime.Hours, viewModel.AmountTimeToParkTime.Minutes) );
-                return View("Receipt", apelsin);
+                var receipt = GarageHandler.Instance.Park(viewModel.Vehicle, viewModel.AmountTimeToPark );
+                return View("Receipt", receipt);
             }
 
             return View(viewModel);
@@ -78,9 +75,12 @@ namespace GarageII_TheParking.Controllers
 
         protected override void Dispose(bool disposing)
         {
+
+  
+
             if (disposing)
             {
-                Handler.GarageHandler.Close(); // handles disposing the singleton garage handler... sadly this cannot be done with idisposable due to the need to kill of teh singleton instance as well to trigger the creation of a new open dbcontext... otherwise it will end up disposed
+                Handler.GarageHandler.Instance.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -255,6 +255,7 @@
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Garage\Index.cshtml" />
     <Content Include="Views\Garage\Park.cshtml" />
+    <Content Include="Views\Garage\Details.cshtml" />
     <None Include="Views\Garage\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>

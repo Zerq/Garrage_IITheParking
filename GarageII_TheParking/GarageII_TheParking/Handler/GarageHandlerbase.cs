@@ -27,9 +27,6 @@ namespace GarageII_TheParking.Handler {
                 return garage;
             }
         }
-
-
-
        
 
 

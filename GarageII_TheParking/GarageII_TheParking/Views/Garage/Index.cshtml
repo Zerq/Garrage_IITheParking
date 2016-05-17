@@ -69,10 +69,10 @@
             @Html.DisplayFor(modelItem => item.ParkOutDate)
         </td>*@
         <td>
-            @Html.ActionLink("Collect", "Collect", new { id=item.Id})
+            @Html.ActionLink("Collect", "Collect", new { id = item.Id})
         </td>
         <td>
-            @Html.ActionLink("KEBAB",  "Details", new { id = item.Id })
+            @Html.ActionLink("Details",  "Details", new { id = item.Id })
         </td>
     </tr>
 }

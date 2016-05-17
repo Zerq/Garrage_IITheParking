@@ -55,7 +55,7 @@ namespace GarageII_TheParking.Controllers
         {
             if (ModelState.IsValid)
             {
-                var apelsin = GarageHandler.Instance.Park(viewModel.Vehicle, new TimeSpan (viewModel.AmountTimeToParkDays, viewModel.AmountTimeToParkTime.Hours, viewModel.AmountTimeToParkTime.Minutes) );
+                var apelsin = GarageHandler.Instance.Park(viewModel.Vehicle,  new TimeSpan (   viewModel.AmountTimeToParkDays, viewModel.AmountTimeToParkTime.Hours, viewModel.AmountTimeToParkTime.Minutes,0 ) );
                 return View("Receipt", apelsin);
             }
 

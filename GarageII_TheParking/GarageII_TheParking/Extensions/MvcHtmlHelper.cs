@@ -21,7 +21,7 @@ namespace GarageII_TheParking.Extensions
                            htmlHelper.ViewData);
             var min = (string)((ViewDataDictionary<TModel>)htmlAttributes)["min"];
             var max = (string)((ViewDataDictionary<TModel>)htmlAttributes)["max"];
-            /var value = (string)((ViewDataDictionary<TModel>)htmlAttributes)["value"];
+            var value = (string)((ViewDataDictionary<TModel>)htmlAttributes)["value"];
             return Range(htmlHelper, min, max, value);
         }
 

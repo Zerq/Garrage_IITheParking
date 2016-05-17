@@ -18,10 +18,12 @@ namespace GarageII_TheParking.Controllers
 
         // GET: Garage
         public ActionResult Index()
-        {
-            var buffert =  GarageHandler.Instance.Garage;
-            buffert.Vehicle = GarageHandler.Instance.ListVehicles(buffert);
-            return View(buffert);
+        { 
+            var result = new Models.ViewModels.GarageViewModel() {
+                Garage = GarageHandler.Instance.Garage
+            };
+            result.Vehicles = GarageHandler.Instance.ListVehicles(result.Garage);            
+            return View(result);
         }
 
         // GET: Garage/Details/5

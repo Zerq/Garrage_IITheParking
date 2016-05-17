@@ -40,7 +40,7 @@ namespace GarageII_TheParking.Controllers
         }
 
         public ActionResult Park() {
-            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle() AmountTimeToPark = new TimeSpan() });
+            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle(), AmountTimeToParkDays =0, AmountTimeToParkTime = new TimeSpan() });
         }
 
 
@@ -50,7 +50,10 @@ namespace GarageII_TheParking.Controllers
         {
             if (ModelState.IsValid)
             {
-                var receipt = GarageHandler.Instance.Park(viewModel.Vehicle, viewModel.AmountTimeToPark );
+
+                var newTimeSpan = viewModel.AmountTimeToParkTime.Add(new TimeSpan(viewModel.AmountTimeToParkDays, 0, 0, 0));
+
+                var receipt = GarageHandler.Instance.Park(viewModel.Vehicle, newTimeSpan);
                 return View("Receipt", receipt);
             }
 

@@ -9,7 +9,7 @@ using System.Web;
 // nåt som Kalle har kodat - Stay away
 namespace GarageII_TheParking.Handler {
 
-    public abstract class AbstractGarageHandler : IDisposable {
+    public abstract class AbstractGarageHandler {
 
        protected Context db = new Context();
 

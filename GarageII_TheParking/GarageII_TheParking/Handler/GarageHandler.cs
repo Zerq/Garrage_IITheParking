@@ -64,5 +64,12 @@ namespace GarageII_TheParking.Handler {
         public  Vehicle GetDetails(Guid? Key) {
             throw new NotImplementedException();
         }
+
+        public static void Close() {
+            if (instance != null) {
+                instance.db.Dispose();
+                instance = null;
+            }
+        }
     }
 }

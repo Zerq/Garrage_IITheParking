@@ -71,13 +71,13 @@ namespace GarageII_TheParking.Controllers
 
 
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Handler.GarageHandler.Close();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

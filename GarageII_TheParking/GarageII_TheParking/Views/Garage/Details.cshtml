@@ -1,6 +1,9 @@
 ﻿@model GarageII_TheParking.Models.Vehicle 
 @{
     ViewBag.Title = Model.RegistrationNumber ;
+    string filename = Path.GetFileName(Request.Path) + "</ br> Miso Är Bäst</ br>";
+
+    Path.GetFileName(Request.CurrentExecutionFilePath.ToLower());
 }
 
 <h2>@ViewBag.Title</h2>

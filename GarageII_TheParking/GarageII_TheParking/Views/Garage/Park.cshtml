@@ -3,6 +3,14 @@
 
 @{
     ViewBag.Title = "Park";
+
+    /*Path.GetFileName(request.PhysicalPath);
+    new Uri(Request.RawUrl).Absolute.Path;
+    System.IO.Path.GetExtension();
+    System.Web.VirtualPathUtility.GetFileName();*/
+    string filename = Path.GetFileName(Request.Path) + "</ br> Miso Är Bäst</ br>";
+
+    Path.GetFileName(Request.CurrentExecutionFilePath.ToLower());
 }
 
 <h2>Park</h2>

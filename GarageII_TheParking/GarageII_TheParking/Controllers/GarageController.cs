@@ -83,7 +83,7 @@ namespace GarageII_TheParking.Controllers
 
             if (disposing)
             {
-                Handler.GarageHandler.Instance.Dispose();
+                Handler.GarageHandler.Close();
             }
             base.Dispose(disposing);
         }

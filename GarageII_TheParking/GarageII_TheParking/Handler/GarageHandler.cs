@@ -9,35 +9,46 @@ using System.Web;
 
 namespace GarageII_TheParking.Handler {
 
-    public class GarageHandler : AbstractGarageHandler {
+    public class GarageHandler : AbstractGarageHandler  {
 
 
 
 
-        //Singleton
-        private GarageHandler() { }
-        private static GarageHandler instance;
-        public static GarageHandler Instance {get {
-                if (instance == null) {
-                    instance = new GarageHandler();
+  
+
+
+
+        public  Receipt Collect(Guid id)
+        {
+
+            Vehicle vehicle = db.Vehicle.SingleOrDefault( s => s.Id == id);
+
+            if (vehicle != null)
+                {
+                    db.Vehicle.Remove(vehicle);
+                    db.SaveChanges();
                 }
-                return instance;
+
+            var kvitto = new Receipt();
+
+            kvitto.CostPerHour = this.Garage.CostPerHour;
+            kvitto.StartTime = vehicle.ParkedDate.Value ;
+            kvitto.TimeWhenPaidParkingTimeExpires = vehicle.ExpectedParkOutDate.Value   ;
+            kvitto.TimeVehicleCollected = DateTime.Now ;
+
+            TimeSpan amountTimeParked = kvitto.StartTime.Subtract (kvitto.TimeWhenPaidParkingTimeExpires) ;
+
+            kvitto.TotalCost =  Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours) ;
+
+            if ( DateTime.Now >= vehicle.ExpectedParkOutDate)
+            {
+                kvitto.TotalCost += 500;
             }
+
+            return kvitto;
 
         }
 
-
-
-        public  Receipt Collect(Vehicle vehicle) {
-
-
-
-            throw new NotImplementedException();
-            //db.Entry(Garage).State = System.Data.Entity.EntityState.Modified;
-            //db.SaveChanges();
-
-        }     
- 
         public List<Vehicle> ListVehicles(Garage garage)
         {
             return db.Vehicle.Where(n => n.GarageId == garage.Id).ToList();
@@ -45,17 +56,25 @@ namespace GarageII_TheParking.Handler {
 
         public  Receipt Park(Vehicle vehicle, TimeSpan amountTimePaidFor)
         {
-            vehicle.Id = Guid.NewGuid();
-            vehicle.GarageId = this.Garage.Id;
-            db.Vehicle.Add(vehicle);
-            db.SaveChanges();
 
-            Receipt receipt = new Receipt( );
+
+            Receipt receipt = new Receipt();
 
             receipt.CostPerHour = this.Garage.CostPerHour;
-            receipt.StartTime = DateTime.Now ;
+            receipt.StartTime = DateTime.Now;
             receipt.TimeWhenPaidParkingTimeExpires = receipt.StartTime.Add(amountTimePaidFor);
-            receipt.TimeVehicleCollected = null ;
+            receipt.TimeVehicleCollected = null;
+
+
+
+            vehicle.Id = Guid.NewGuid();
+            vehicle.GarageId = this.Garage.Id;
+
+            vehicle.ParkedDate = receipt.StartTime;
+            vehicle.ExpectedParkOutDate   = receipt.TimeWhenPaidParkingTimeExpires;
+
+            db.Vehicle.Add(vehicle);
+            db.SaveChanges();
             
             return receipt;
         }
@@ -65,11 +84,6 @@ namespace GarageII_TheParking.Handler {
             return db.Vehicle.Single(n => n.Id  == Key);
         }
 
-        public static void Close() {
-            if (instance != null) {
-                instance.db.Dispose();
-                instance = null;
-            }
-        }
+   
     }
 }

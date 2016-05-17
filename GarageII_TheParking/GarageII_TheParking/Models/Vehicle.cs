@@ -19,7 +19,6 @@ namespace GarageII_TheParking.Models {
         public string Brand { get; set; }
         public DateTime? ParkedDate { get; set; }
         public DateTime? ExpectedParkOutDate { get; set; }
-        public DateTime? ParkOutDate { get; set; }
         public Guid GarageId { get; set; }
     }
 

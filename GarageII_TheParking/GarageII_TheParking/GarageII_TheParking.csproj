@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201605170706499_LooserGarageConnectionII.Designer.cs">
       <DependentUpon>201605170706499_LooserGarageConnectionII.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605171310362_constipatd_badger.cs" />
+    <Compile Include="Migrations\201605171310362_constipatd_badger.Designer.cs">
+      <DependentUpon>201605171310362_constipatd_badger.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Garage.cs" />
@@ -277,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605170706499_LooserGarageConnectionII.resx">
       <DependentUpon>201605170706499_LooserGarageConnectionII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605171310362_constipatd_badger.resx">
+      <DependentUpon>201605171310362_constipatd_badger.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

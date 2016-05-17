@@ -14,14 +14,15 @@ namespace GarageII_TheParking.Controllers
 {
     public class GarageController : Controller
     {
- 
+        GarageHandler hander = new GarageHandler();
+
         // GET: Garage
         public ActionResult Index()
         {
             var result = new Models.ViewModels.GarageViewModel() {
-                Garage = GarageHandler.Instance.Garage
+                Garage = hander.Garage
             };
-            result.Vehicles = GarageHandler.Instance.ListVehicles(result.Garage);            
+            result.Vehicles = hander.ListVehicles(result.Garage);            
             return View(result);
         }
 
@@ -32,7 +33,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vehicle vehicle = Handler.GarageHandler.Instance.GetDetails(id);
+            Vehicle vehicle = hander.GetDetails(id);
             if (vehicle == null)
             {
                 return HttpNotFound();
@@ -54,22 +55,16 @@ namespace GarageII_TheParking.Controllers
 
                 var newTimeSpan = viewModel.AmountTimeToParkTime.Add(new TimeSpan(viewModel.AmountTimeToParkDays, 0, 0, 0));
 
-                var receipt = GarageHandler.Instance.Park(viewModel.Vehicle, newTimeSpan);
+                var receipt = hander.Park(viewModel.Vehicle, newTimeSpan);
                 return View("Receipt", receipt);
             }
 
             return View(viewModel);
         }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Collect([Bind(Include = "Id,Color,RegistrationNumber,Type,WheelCount,Brand")] Vehicle vehicle) {
-            if (ModelState.IsValid) {
-                var receipt = GarageHandler.Instance.Collect(vehicle);
+         
+        public ActionResult Collect( Guid id) {
+                var receipt = hander.Collect(id);
                 return View(receipt);
-            }
-           
-            return View(vehicle);
         }
 
         protected override void Dispose(bool disposing)
@@ -79,7 +74,7 @@ namespace GarageII_TheParking.Controllers
 
             if (disposing)
             {
-                Handler.GarageHandler.Close();
+                hander.Dispose();
             }
             base.Dispose(disposing);
         }

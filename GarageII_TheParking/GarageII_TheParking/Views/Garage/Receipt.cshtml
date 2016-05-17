@@ -19,14 +19,36 @@
 
     <dt>Start time</dt>
     <dd>@Model.StartTime</dd>
-    @if (Model.TimeVehicleCollected != null) {
-    <dt>Vehicle collected:</dt>
-    <dd>@Html.DisplayFor(n => n.TimeVehicleCollected)</dd>
+    @if (Model.TimeVehicleCollected != null)
+    {
+        <dt>Vehicle collected:</dt>
+        <dd>@Html.DisplayFor(n => n.TimeVehicleCollected)</dd>
     }
 
     <dt>Paid until:</dt>
     <dd>@Model.TimeWhenPaidParkingTimeExpires</dd>
 
+
+
+
+    @if (Model.TimeVehicleCollected != null)
+    {
+        <dt>Slutgiltig total kostnad:</dt>
+        <dd>@Model.TotalCost</dd>
+
+        <dt>Uthämtningskvitto på inlämnad bil.</dt>
+        <dd></dd>
+    }
+    else
+    {
+        <dt>Preliminär Total kostnad:</dt>
+        <dd>@Model.TotalCost</dd>
+
+        <dt>Inlämningskvitto på inlämnad bil.</dt>
+        <dd></dd>
+    }
+
+
 </dl>
 
-Kvitto på inlämnad bil.
+

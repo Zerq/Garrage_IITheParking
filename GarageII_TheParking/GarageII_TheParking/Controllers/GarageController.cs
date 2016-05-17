@@ -64,7 +64,10 @@ namespace GarageII_TheParking.Controllers
          
         public ActionResult Collect( Guid id) {
                 var receipt = hander.Collect(id);
-                return View(receipt);
+
+                
+
+                return View("Receipt", receipt);
         }
 
         protected override void Dispose(bool disposing)

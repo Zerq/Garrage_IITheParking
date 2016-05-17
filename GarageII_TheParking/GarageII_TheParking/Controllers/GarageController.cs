@@ -40,7 +40,7 @@ namespace GarageII_TheParking.Controllers
         }
 
         public ActionResult Park() {
-            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle(), AmountTimeToPark = new TimeSpan() });
+            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle() AmountTimeToPark = new TimeSpan() });
         }
 
 
@@ -73,6 +73,9 @@ namespace GarageII_TheParking.Controllers
 
         protected override void Dispose(bool disposing)
         {
+
+  
+
             if (disposing)
             {
                 Handler.GarageHandler.Instance.Dispose();

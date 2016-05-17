@@ -6,15 +6,18 @@ using System.Web;
 
 namespace GarageII_TheParking.Models.ViewModels
 {
-    [System.Web.Mvc.Bind(Include = "Vehicle,AmountTimeToPark")]
+                                               
+       [System.Web.Mvc.Bind(Include = "Vehicle,AmountTimeToParkDays,AmountTimeToParkTime")]
     public class VehicleAndAmountTimeToPark
     {
         public Vehicle Vehicle { get; set; }
+        
+        public int AmountTimeToParkDays { get; set; }
 
         [Required]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
-        public TimeSpan AmountTimeToPark { get; set; }
+         public TimeSpan AmountTimeToParkTime { get; set; }
 
     }
 }

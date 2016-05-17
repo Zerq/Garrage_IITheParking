@@ -28,9 +28,7 @@ namespace GarageII_TheParking.Handler {
             }
         }
 
-        public void Dispose()
-        {
-            db.Dispose();
-        }
+
+
     }
 }

@@ -179,9 +179,14 @@
     <Compile Include="Migrations\201605161125268_add-migratino yomomma3.Designer.cs">
       <DependentUpon>201605161125268_add-migratino yomomma3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605170706499_LooserGarageConnectionII.cs" />
+    <Compile Include="Migrations\201605170706499_LooserGarageConnectionII.Designer.cs">
+      <DependentUpon>201605170706499_LooserGarageConnectionII.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Garage.cs" />
+    <Compile Include="Models\ViewModels\GarageView.cs" />
     <Compile Include="Models\ViewModels\Receipt.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleType.cs" />
@@ -250,6 +255,7 @@
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Garage\Index.cshtml" />
     <Content Include="Views\Garage\Park.cshtml" />
+    <Content Include="Views\Garage\Details.cshtml" />
     <None Include="Views\Garage\Receipt.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605161125268_add-migratino yomomma3.resx">
       <DependentUpon>201605161125268_add-migratino yomomma3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605170706499_LooserGarageConnectionII.resx">
+      <DependentUpon>201605170706499_LooserGarageConnectionII.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

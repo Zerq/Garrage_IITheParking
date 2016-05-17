@@ -14,8 +14,7 @@ namespace GarageII_TheParking.Migrations
 
         protected override void Seed(GarageII_TheParking.DataAccessLayer.Context context)
         {
-            context.Garage.AddOrUpdate(n => n.Id,
-                new Models.Garage() { Id = Guid.Empty, Name = "Garrage II: The parking" });
+            context.Garage.AddOrUpdate(n => n.Id, new Models.Garage() { Id = Guid.Empty, Name = "Garrage II: The parking" });
 
          
         }

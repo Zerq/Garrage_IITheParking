@@ -13,11 +13,8 @@ using GarageII_TheParking.Handler;
 namespace GarageII_TheParking.Controllers
 {
 
-    
-
     public class GarageController : Controller
     {
- 
 
         // GET: Garage
         public ActionResult Index()
@@ -72,9 +69,6 @@ namespace GarageII_TheParking.Controllers
            
             return View(vehicle);
         }
-
-
-
 
         protected override void Dispose(bool disposing)
         {

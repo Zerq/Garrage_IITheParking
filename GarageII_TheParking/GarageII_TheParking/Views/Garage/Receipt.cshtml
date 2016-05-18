@@ -15,18 +15,18 @@
 <dl>
 
     <dt>Cost per hour:</dt>
-    <dd>@Model.CostPerHour</dd>
+    <dd>@Html.DisplayFor(n => n.CostPerHour)</dd>
 
     <dt>Start time</dt>
-    <dd>@Model.StartTime</dd>
+    <dd>@Html.DisplayFor(n => n.StartTime)</dd>
     @if (Model.TimeVehicleCollected != null)
     {
         <dt>Vehicle collected:</dt>
-        <dd>@Html.DisplayFor(n => n.TimeVehicleCollected.Value )</dd>
+        <dd>@Html.DisplayFor(n => n.TimeVehicleCollected )</dd>
     }
 
     <dt>Paid until:</dt>
-    <dd>@Model.TimeWhenPaidParkingTimeExpires</dd>
+    <dd>@Html.DisplayFor(n=>  n.TimeWhenPaidParkingTimeExpires)</dd>
 
 
 
@@ -34,7 +34,7 @@
     @if (Model.TimeVehicleCollected != null)
     {
         <dt>Slutgiltig total kostnad:</dt>
-        <dd>@Model.TotalCost</dd>
+        <dd>@Html.DisplayFor(n => n.TotalCost)</dd>
 
         <dt>Uthämtningskvitto på inlämnad bil.</dt>
         <dd></dd>
@@ -42,7 +42,7 @@
     else
     {
         <dt>Preliminär Total kostnad:</dt>
-        <dd>@Model.TotalCost</dd>
+        <dd>@Html.DisplayFor(n=>  n.TotalCost)</dd>
 
         <dt>Inlämningskvitto på inlämnad bil.</dt>
         <dd></dd>

@@ -14,12 +14,10 @@ namespace GarageII_TheParking.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
         public DateTime StartTime { get; set; }
 
-        [DataType (DataType.DateTime )]
-        [DisplayFormat(DataFormatString = @"{0:yyyy-MM-dd hh:mm}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
         public DateTime TimeWhenPaidParkingTimeExpires { get; set; }
 
-        [DataType (DataType.DateTime )]
-        [DisplayFormat(DataFormatString = @"{0:dd}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
         public DateTime? TimeVehicleCollected { get; set; }
     }
 } 

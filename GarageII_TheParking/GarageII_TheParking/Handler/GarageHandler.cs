@@ -11,13 +11,6 @@ namespace GarageII_TheParking.Handler {
 
     public class GarageHandler : AbstractGarageHandler  {
 
-
-
-
-  
-
-
-
         public  Receipt Collect(Guid id)
         {
 
@@ -36,9 +29,8 @@ namespace GarageII_TheParking.Handler {
             kvitto.TimeWhenPaidParkingTimeExpires = vehicle.ExpectedParkOutDate.Value   ;
             kvitto.TimeVehicleCollected = DateTime.Now ;
 
-            TimeSpan amountTimeParked = kvitto.StartTime.Subtract (kvitto.TimeWhenPaidParkingTimeExpires) ;
-
-            kvitto.TotalCost =  Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours) ;
+            TimeSpan amountTimeParked = kvitto.TimeWhenPaidParkingTimeExpires.Subtract(kvitto.StartTime);
+            kvitto.TotalCost = Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours);
 
             if ( DateTime.Now >= vehicle.ExpectedParkOutDate)
             {
@@ -72,6 +64,9 @@ namespace GarageII_TheParking.Handler {
 
             vehicle.ParkedDate = receipt.StartTime;
             vehicle.ExpectedParkOutDate = receipt.TimeWhenPaidParkingTimeExpires;
+
+            TimeSpan amountTimeParked = receipt.TimeWhenPaidParkingTimeExpires.Subtract(receipt.StartTime);
+            receipt.TotalCost = Convert.ToInt32(receipt.CostPerHour * amountTimeParked.TotalHours);
 
             db.Vehicle.Add(vehicle);
             db.SaveChanges();

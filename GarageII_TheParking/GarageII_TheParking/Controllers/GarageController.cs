@@ -19,6 +19,7 @@ namespace GarageII_TheParking.Controllers
         // GET: Garage
         public ActionResult Index()
         {
+        
             var result = new Models.ViewModels.GarageViewModel() {
                 Garage = hander.Garage
             };

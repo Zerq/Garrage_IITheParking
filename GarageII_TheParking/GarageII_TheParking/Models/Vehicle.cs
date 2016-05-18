@@ -17,6 +17,8 @@ namespace GarageII_TheParking.Models {
         [Range(0, int.MaxValue)]
         public int WheelCount { get; set; }
         public string Brand { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm'}")]
         public DateTime? ParkedDate { get; set; }
         public DateTime? ExpectedParkOutDate { get; set; }
         public Guid GarageId { get; set; }

@@ -22,7 +22,7 @@
     @if (Model.TimeVehicleCollected != null)
     {
         <dt>Vehicle collected:</dt>
-        <dd>@Html.DisplayFor(n => n.TimeVehicleCollected)</dd>
+        <dd>@Html.DisplayFor(n => n.TimeVehicleCollected.Value )</dd>
     }
 
     <dt>Paid until:</dt>

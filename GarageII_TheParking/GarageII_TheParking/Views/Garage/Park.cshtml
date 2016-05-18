@@ -65,12 +65,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AmountTimeToParkTime , htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AmountTimeToParkDays, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountTimeToParkDays, "", new { @class = "text-danger" })
-                @Html.EditorFor(model => model.AmountTimeToParkTime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmountTimeToParkTime, "", new { @class = "text-danger" })
+                <span class="leftForm">
+                    @Html.LabelFor(model => model.AmountTimeToParkDays, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.AmountTimeToParkDays, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AmountTimeToParkDays, "", new { @class = "text-danger" })
+                </span>
+                <span class="rightForm">
+                    @Html.LabelFor(model => model.AmountTimeToParkTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.AmountTimeToParkTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AmountTimeToParkTime, "", new { @class = "text-danger" })
+                </span>
             </div>
         </div>
  

@@ -13,7 +13,7 @@ namespace GarageII_TheParking.Models.ViewModels
     {
         public Vehicle Vehicle { get; set; }
 
-        [DisplayName("Förbetalda dagar:")]
+        [DisplayName("Förbetalda dagar och timmar:")]
         public int AmountTimeToParkDays { get; set; }
 
         [DisplayName("Förbetalda timmar:")]

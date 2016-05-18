@@ -24,5 +24,21 @@ select,
 textarea {
  
       max-width: 180px;
-      background-color: hotpink !important;
+      background-color: black !important;
+      color:white !important;
+}
+
+.prepaid-days {
+display:inline;
+max-width: 60px
+}
+
+.prepaid-hours{
+display:inline;
+max-width: 120px
+}
+
+.submit{
+    color: royalblue !important;
+    font-weight: bolder
 }

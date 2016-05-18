@@ -1,6 +1,6 @@
 ﻿@model GarageII_TheParking.Models.Vehicle 
 @{
-    ViewBag.Title = Model.RegistrationNumber ;
+    ViewBag.Title = Model.RegistrationNumber;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -31,9 +31,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ExpectedParkOutDate)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.ParkOutDate )
-            </th>*@
         <th>
 
         </th>
@@ -61,9 +58,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.ExpectedParkOutDate)
                 </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => modelItem.ParkOutDate)
-                </td>*@
             <td>
                 @Html.ActionLink("Collect", "Collect", new { id = Model.Id })
             </td>

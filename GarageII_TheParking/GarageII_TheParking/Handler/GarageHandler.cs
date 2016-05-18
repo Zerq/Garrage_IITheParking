@@ -71,7 +71,7 @@ namespace GarageII_TheParking.Handler {
             vehicle.GarageId = this.Garage.Id;
 
             vehicle.ParkedDate = receipt.StartTime;
-            vehicle.ExpectedParkOutDate   = receipt.TimeWhenPaidParkingTimeExpires;
+            vehicle.ExpectedParkOutDate = receipt.TimeWhenPaidParkingTimeExpires;
 
             db.Vehicle.Add(vehicle);
             db.SaveChanges();

@@ -24,5 +24,5 @@ select,
 textarea {
  
       max-width: 180px;
-      background-color: hotpink;
+      background-color: hotpink !important;
 }

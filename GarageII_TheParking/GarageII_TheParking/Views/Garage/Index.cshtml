@@ -26,21 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => exampleVehicle.Type)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => exampleVehicle.WheelCount)
-        </th>
         <th>
-            @Html.DisplayNameFor(model => exampleVehicle.Brand)
+            @Html.DisplayNameFor(model => exampleVehicle.PersonWhoParkedVechicle)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => exampleVehicle.ParkedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => exampleVehicle.ExpectedParkOutDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => exampleVehicle.ParkOutDate)
-        </th>*@
         <th>
    
         </th>
@@ -55,23 +43,13 @@
             @Html.DisplayFor(modelItem => item.RegistrationNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.WheelCount)
+            @Html.DisplayFor(modelItem => item.Type.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Brand)
+            @if (item.PersonWhoParkedVechicle != null) {
+            @Html.DisplayFor(modelItem => $"{item.PersonWhoParkedVechicle.Name} {item.PersonWhoParkedVechicle.LastName}")
+            }
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpectedParkOutDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkOutDate)
-        </td>*@
         <td>
             @Html.ActionLink("Collect", "Collect", new { id = item.Id})
         </td>

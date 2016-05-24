@@ -8,7 +8,7 @@ using System.Web;
 namespace GarageII_TheParking.Models.ViewModels
 {
                                                
-       [System.Web.Mvc.Bind(Include = "Vehicle, AmountTimeToParkDays, AmountTimeToParkTime")]
+       [System.Web.Mvc.Bind(Include = "Vehicle, AmountTimeToParkDays, AmountTimeToParkTime, VehicleType, MemberWhoParkedVehicle", Exclude = "AllTypes, AllMembers")]
     public class VehicleAndAmountTimeToPark
     {
         public Vehicle Vehicle { get; set; }
@@ -22,5 +22,12 @@ namespace GarageII_TheParking.Models.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = @"{0:hh\:mm}")]
          public TimeSpan AmountTimeToParkTime { get; set; }
 
+
+        public Guid MemberWhoParkedVehicle { get; set; }
+        public Guid VehicleType { get; set; }
+
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllTypes { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> AllMembers { get; set; }
     }
 }

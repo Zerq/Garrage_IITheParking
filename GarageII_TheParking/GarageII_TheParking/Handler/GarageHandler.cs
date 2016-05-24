@@ -41,6 +41,14 @@ namespace GarageII_TheParking.Handler {
 
         }
 
+        public List<VehicleType> GetAllVehicleTypes() {
+            return db.VehicleTypes.ToList();
+        }
+
+        public List<Member> GetAllMembers() {
+            return db.Members.ToList();
+        }
+
         public List<Vehicle> ListVehicles(Garage garage)
         {
             return db.Vehicle.Where(n => n.GarageId == garage.Id).ToList();
@@ -73,6 +81,12 @@ namespace GarageII_TheParking.Handler {
             
             return receipt;
         }
+
+        internal void PopulateFromView(VehicleAndAmountTimeToPark viewModel) {
+            viewModel.Vehicle.Type = db.VehicleTypes.FirstOrDefault(vt => vt.Id == viewModel.VehicleType);
+            viewModel.Vehicle.PersonWhoParkedVechicle = db.Members.FirstOrDefault(m => m.Id == viewModel.MemberWhoParkedVehicle);
+        }
+
         // få ut ett kvitto 
 
         public  Vehicle GetDetails(Guid? Key) {

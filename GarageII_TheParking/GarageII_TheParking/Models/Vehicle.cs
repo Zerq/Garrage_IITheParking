@@ -9,7 +9,7 @@ using System.Web;
 namespace GarageII_TheParking.Models {
     // Michael testar att kommentera från GitHub
 
-    [System.Web.Mvc.Bind(Include = "Id, Color, RegistrationNumber, Type, WheelCount, Brand, ParkedDate, ExpectedParkOutDate, ParkOutDate")]
+    [System.Web.Mvc.Bind(Include = "Id, Color, RegistrationNumber, WheelCount, Brand, ParkedDate, ExpectedParkOutDate, ParkOutDate", Exclude = "PersonWhoParkedVechicle,Type")]
     public class Vehicle {
         public Guid Id { get; set; }
 
@@ -19,8 +19,7 @@ namespace GarageII_TheParking.Models {
         [DisplayName("Registrationsnummer:")]
         public string RegistrationNumber { get; set; }
 
-        [DisplayName("Typ av fordon:")]
-        public VehicleType Type { get; set; }
+
 
         [DisplayName("Antal hjul:")]
         [Range(0, int.MaxValue)]
@@ -39,6 +38,13 @@ namespace GarageII_TheParking.Models {
 
         [DisplayName("GarageId:")]
         public Guid GarageId { get; set; }
+
+
+        [DisplayName("Typ av fordon:")]
+        public VehicleType Type { get; set; }
+
+        [DisplayName("Person som parkerade bilen:")]
+        public Member PersonWhoParkedVechicle { get; set; }
     }
 
 

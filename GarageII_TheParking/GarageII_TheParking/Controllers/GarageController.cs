@@ -14,16 +14,16 @@ namespace GarageII_TheParking.Controllers
 {
     public class GarageController : Controller
     {
-        GarageHandler hander = new GarageHandler();
+        GarageHandler handler = new GarageHandler();
 
         // GET: Garage
         public ActionResult Index()
         {
         
             var result = new Models.ViewModels.GarageViewModel() {
-                Garage = hander.Garage
+                Garage = handler.Garage
             };
-            result.Vehicles = hander.ListVehicles(result.Garage);            
+            result.Vehicles = handler.ListVehicles(result.Garage);            
             return View(result);
         }
 
@@ -34,7 +34,7 @@ namespace GarageII_TheParking.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vehicle vehicle = hander.GetDetails(id);
+            Vehicle vehicle = handler.GetDetails(id);
             if (vehicle == null)
             {
                 return HttpNotFound();
@@ -43,7 +43,16 @@ namespace GarageII_TheParking.Controllers
         }
 
         public ActionResult Park() {
-            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() { Vehicle = new Models.Vehicle(), AmountTimeToParkDays =0, AmountTimeToParkTime = new TimeSpan() });
+            var members  = handler.GetAllMembers().Select(n => new SelectListItem() { Text =$"{n.Name} {n.LastName}", Value = n.Id.ToString() });
+            var types = handler.GetAllVehicleTypes().Select(n => new SelectListItem() { Text = n.Name, Value = n.Id.ToString() });
+
+
+            return View(new Models.ViewModels.VehicleAndAmountTimeToPark() {
+                 AllTypes  =types, 
+                AllMembers = members,
+                Vehicle = new Models.Vehicle(),
+                AmountTimeToParkDays =0,
+                AmountTimeToParkTime = new TimeSpan() });
         }
 
 
@@ -51,20 +60,29 @@ namespace GarageII_TheParking.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Park( Models.ViewModels.VehicleAndAmountTimeToPark viewModel)
         {
+
+            handler.PopulateFromView(viewModel); 
             if (ModelState.IsValid)
             {
-
+             
                 var newTimeSpan = viewModel.AmountTimeToParkTime.Add(new TimeSpan(viewModel.AmountTimeToParkDays, 0, 0, 0));
 
-                var receipt = hander.Park(viewModel.Vehicle, newTimeSpan);
+                var receipt = handler.Park(viewModel.Vehicle, newTimeSpan);
                 return View("Receipt", receipt);
             }
+
+
+            var members = handler.GetAllMembers().Select(n => new SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() });
+            var types = handler.GetAllVehicleTypes().Select(n => new SelectListItem() { Text = n.Name, Value = n.Name });
+
+            viewModel.AllMembers = members;
+            viewModel.AllTypes = types;
 
             return View(viewModel);
         }
          
         public ActionResult Collect( Guid id) {
-                var receipt = hander.Collect(id);
+                var receipt = handler.Collect(id);
 
                 
 
@@ -78,7 +96,7 @@ namespace GarageII_TheParking.Controllers
 
             if (disposing)
             {
-                hander.Dispose();
+                handler.Dispose();
             }
             base.Dispose(disposing);
         }

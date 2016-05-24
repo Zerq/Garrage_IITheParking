@@ -27,9 +27,11 @@ namespace GarageII_TheParking.Handler {
             kvitto.CostPerHour = this.Garage.CostPerHour;
             kvitto.StartTime = vehicle.ParkedDate.Value ;
             kvitto.TimeWhenPaidParkingTimeExpires = vehicle.ExpectedParkOutDate.Value   ;
-            kvitto.TimeVehicleCollected = DateTime.Now ;
+            kvitto.TimeVehicleCollected = DateTime.Now;
+            kvitto.Name
+            kvitto.LastName
 
-            TimeSpan amountTimeParked = kvitto.TimeWhenPaidParkingTimeExpires.Subtract(kvitto.StartTime);
+        TimeSpan amountTimeParked = kvitto.TimeWhenPaidParkingTimeExpires.Subtract(kvitto.StartTime);
             kvitto.TotalCost = Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours);
 
             if ( DateTime.Now >= vehicle.ExpectedParkOutDate)
@@ -85,6 +87,11 @@ namespace GarageII_TheParking.Handler {
         internal void PopulateFromView(VehicleAndAmountTimeToPark viewModel) {
             viewModel.Vehicle.Type = db.VehicleTypes.FirstOrDefault(vt => vt.Id == viewModel.VehicleType);
             viewModel.Vehicle.PersonWhoParkedVechicle = db.Members.FirstOrDefault(m => m.Id == viewModel.MemberWhoParkedVehicle);
+        }
+
+        internal object Collect(Guid id, Guid collectorId)
+        {
+            throw new NotImplementedException();
         }
 
         // få ut ett kvitto 

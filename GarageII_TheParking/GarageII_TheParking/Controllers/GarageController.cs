@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using GarageII_TheParking.DataAccessLayer;
 using GarageII_TheParking.Models;
 using GarageII_TheParking.Handler;
+using GarageII_TheParking.Models.ViewModels;
 
 namespace GarageII_TheParking.Controllers
 {
@@ -80,13 +81,21 @@ namespace GarageII_TheParking.Controllers
 
             return View(viewModel);
         }
-         
-        public ActionResult Collect( Guid id) {
-                var receipt = handler.Collect(id);
 
-                
+        public ActionResult Collect(Guid id)
+        {
+            // var receipt = handler.Collect(id);
+            return View(new CollectViewModel()  {
+                 VehicleId = id,
+                 PersonDropDownOptions = handler.GetAllMembers().Select(n => new System.Web.Mvc.SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() })
+            });
+        }
 
-                return View("Receipt", receipt);
+        public ActionResult Collect(Guid id, Guid collectorId)
+        {
+            var receipt = handler.Collect(id, collectorId);
+
+            return View("Receipt", receipt);
         }
 
         protected override void Dispose(bool disposing)

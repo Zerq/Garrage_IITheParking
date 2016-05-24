@@ -19,5 +19,8 @@ namespace GarageII_TheParking.Models.ViewModels
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
         public DateTime? TimeVehicleCollected { get; set; }
+
+        public string Name { get; set; }
+        public string LastName { get; set; }
     }
 } 

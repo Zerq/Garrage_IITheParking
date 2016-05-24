@@ -176,6 +176,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ViewModels\CollectViewModel.cs" />
     <Compile Include="Models\ViewModels\GarageView.cs" />
+    <Compile Include="Models\ViewModels\Page.cs" />
     <Compile Include="Models\ViewModels\Receipt.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Models\VehicleType.cs" />
@@ -241,6 +242,7 @@
     <Content Include="Views\Garage\Park.cshtml" />
     <Content Include="Views\Garage\Details.cshtml" />
     <Content Include="Views\Garage\Collect.cshtml" />
+    <Content Include="Views\Garage\Rejected.cshtml" />
     <None Include="Views\Garage\Receipt.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Delete.cshtml" />

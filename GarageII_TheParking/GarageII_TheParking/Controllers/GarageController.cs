@@ -11,61 +11,54 @@ using GarageII_TheParking.Models;
 using GarageII_TheParking.Handler;
 using GarageII_TheParking.Models.ViewModels;
 
-namespace GarageII_TheParking.Controllers
-{
-    public class GarageController : Controller
-    {
+namespace GarageII_TheParking.Controllers {
+    public class GarageController : Controller {
         GarageHandler handler = new GarageHandler();
 
         // GET: Garage
-        public ActionResult Index()
-        {
-        
+        public ActionResult Index() {
+
             var result = new Models.ViewModels.GarageViewModel() {
                 Garage = handler.Garage
             };
-            result.Vehicles = handler.ListVehicles(result.Garage);            
+            result.Vehicles = handler.ListVehicles(result.Garage);
             return View(result);
         }
 
         // GET: Garage/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(Guid? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Vehicle vehicle = handler.GetDetails(id);
-            if (vehicle == null)
-            {
+            if (vehicle == null) {
                 return HttpNotFound();
             }
             return View(vehicle);
         }
 
         public ActionResult Park() {
-            var members  = handler.GetAllMembers().Select(n => new SelectListItem() { Text =$"{n.Name} {n.LastName}", Value = n.Id.ToString() });
+            var members = handler.GetAllMembers().Select(n => new SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() });
             var types = handler.GetAllVehicleTypes().Select(n => new SelectListItem() { Text = n.Name, Value = n.Id.ToString() });
 
 
             return View(new Models.ViewModels.VehicleAndAmountTimeToPark() {
-                 AllTypes  =types, 
+                AllTypes = types,
                 AllMembers = members,
                 Vehicle = new Models.Vehicle(),
-                AmountTimeToParkDays =0,
-                AmountTimeToParkTime = new TimeSpan() });
+                AmountTimeToParkDays = 0,
+                AmountTimeToParkTime = new TimeSpan()
+            });
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Park( Models.ViewModels.VehicleAndAmountTimeToPark viewModel)
-        {
+        public ActionResult Park(Models.ViewModels.VehicleAndAmountTimeToPark viewModel) {
 
-            handler.PopulateFromView(viewModel); 
-            if (ModelState.IsValid)
-            {
-             
+            handler.PopulateFromView(viewModel);
+            if (ModelState.IsValid) {
+
                 var newTimeSpan = viewModel.AmountTimeToParkTime.Add(new TimeSpan(viewModel.AmountTimeToParkDays, 0, 0, 0));
 
                 var receipt = handler.Park(viewModel.Vehicle, newTimeSpan);
@@ -82,29 +75,36 @@ namespace GarageII_TheParking.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Collect(Guid id)
-        {
+        [HttpGet]
+        public ActionResult Collect(Guid id) {
             // var receipt = handler.Collect(id);
-            return View(new CollectViewModel()  {
-                 VehicleId = id,
-                 PersonDropDownOptions = handler.GetAllMembers().Select(n => new System.Web.Mvc.SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() })
+            return View(new CollectViewModel() {
+                VehicleId = id,
+                PersonDropDownOptions = handler.GetAllMembers().Select(n => new System.Web.Mvc.SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() })
             });
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Collect(CollectViewModel model) {
+            if (ModelState.IsValid) {
+                var receipt = handler.Collect(model);
 
-        public ActionResult Collect(Guid id, Guid collectorId)
-        {
-            var receipt = handler.Collect(id, collectorId);
+                if (receipt != null) {
+                    return View("Receipt", receipt);
+                } else {
+                    return View(model.VehicleId);
+                }
 
-            return View("Receipt", receipt);
+            } else {
+                return View(model.VehicleId);
+            }
         }
 
-        protected override void Dispose(bool disposing)
-        {
+        protected override void Dispose(bool disposing) {
 
-  
 
-            if (disposing)
-            {
+
+            if (disposing) {
                 handler.Dispose();
             }
             base.Dispose(disposing);

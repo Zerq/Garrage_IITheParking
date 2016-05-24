@@ -11,36 +11,37 @@ namespace GarageII_TheParking.Handler {
 
     public class GarageHandler : AbstractGarageHandler  {
 
-        public  Receipt Collect(Guid id)
-        {
 
-            Vehicle vehicle = db.Vehicle.SingleOrDefault( s => s.Id == id);
+        internal object Collect(Models.ViewModels.CollectViewModel model) {
+    
 
-            if (vehicle != null)
-                {
+            Vehicle vehicle = db.Vehicle.SingleOrDefault( s => s.Id == model.VehicleId);
+            Member collector = db.Members.SingleOrDefault(m => m.Id == model.CollectorId);
+
+            if (vehicle.PersonWhoParkedVechicle == collector) {
+                if (vehicle != null) {
                     db.Vehicle.Remove(vehicle);
                     db.SaveChanges();
                 }
 
-            var kvitto = new Receipt();
+                var kvitto = new Receipt();
 
-            kvitto.CostPerHour = this.Garage.CostPerHour;
-            kvitto.StartTime = vehicle.ParkedDate.Value ;
-            kvitto.TimeWhenPaidParkingTimeExpires = vehicle.ExpectedParkOutDate.Value   ;
-            kvitto.TimeVehicleCollected = DateTime.Now;
-            kvitto.Name
-            kvitto.LastName
+                kvitto.CostPerHour = this.Garage.CostPerHour;
+                kvitto.StartTime = vehicle.ParkedDate.Value;
+                kvitto.TimeWhenPaidParkingTimeExpires = vehicle.ExpectedParkOutDate.Value;
+                kvitto.TimeVehicleCollected = DateTime.Now;
+                kvitto.Name = collector.Name;
+                kvitto.LastName = collector.LastName;
 
-        TimeSpan amountTimeParked = kvitto.TimeWhenPaidParkingTimeExpires.Subtract(kvitto.StartTime);
-            kvitto.TotalCost = Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours);
+                TimeSpan amountTimeParked = kvitto.TimeWhenPaidParkingTimeExpires.Subtract(kvitto.StartTime);
+                kvitto.TotalCost = Convert.ToInt32(kvitto.CostPerHour * amountTimeParked.TotalHours);
 
-            if ( DateTime.Now >= vehicle.ExpectedParkOutDate)
-            {
-                kvitto.TotalCost += 500;
-            }
+                if (DateTime.Now >= vehicle.ExpectedParkOutDate) {
+                    kvitto.TotalCost += 500;
+                }
 
-            return kvitto;
-
+                return kvitto;
+            } else return null;
         }
 
         public List<VehicleType> GetAllVehicleTypes() {
@@ -66,7 +67,8 @@ namespace GarageII_TheParking.Handler {
             receipt.StartTime = DateTime.Now;
             receipt.TimeWhenPaidParkingTimeExpires = receipt.StartTime.Add(amountTimePaidFor);
             receipt.TimeVehicleCollected = null;
-
+            receipt.LastName = vehicle.PersonWhoParkedVechicle.LastName;
+            receipt.Name = vehicle.PersonWhoParkedVechicle.Name;
 
 
             vehicle.Id = Guid.NewGuid();
@@ -89,10 +91,7 @@ namespace GarageII_TheParking.Handler {
             viewModel.Vehicle.PersonWhoParkedVechicle = db.Members.FirstOrDefault(m => m.Id == viewModel.MemberWhoParkedVehicle);
         }
 
-        internal object Collect(Guid id, Guid collectorId)
-        {
-            throw new NotImplementedException();
-        }
+   
 
         // få ut ett kvitto 
 

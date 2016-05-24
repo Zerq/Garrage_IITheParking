@@ -3,5 +3,9 @@
     ViewBag.Title = "Collect";
 }
 <h2>Hämta</h2>
-@Html.HiddenFor(n=> n.VehicleId)
-@Html.DropDownListFor
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+@Html.HiddenFor(n => n.VehicleId)
+@Html.DropDownListFor(n => n.CollectorId, Model.PersonDropDownOptions);
+<input type="submit" value="Select" />
+}

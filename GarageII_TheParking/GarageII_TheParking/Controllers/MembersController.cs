@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using GarageII_TheParking.DataAccessLayer;
 using GarageII_TheParking.Models;
+using GarageII_TheParking.Models.ViewModels;
 
 namespace GarageII_TheParking.Controllers
 {
@@ -16,9 +17,26 @@ namespace GarageII_TheParking.Controllers
         private Context db = new Context();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(Page<Member> page = null)
         {
-            return View(db.Members.ToList());
+            var result = db.Members;
+
+            if (page == null) {
+                page = new Page<Member>() {
+                    CurrentPageNumber = 0
+                };
+            }
+
+            if (String.IsNullOrEmpty(page.SearchString)) {
+
+            } else {
+
+
+            }
+
+            Page.ItemsOnPage = db.Members.Skip(offset).Take(25).ToList();
+            Page.CurrentPageNumber = offset;
+            return View();
         }
 
         // GET: Members/Details/5

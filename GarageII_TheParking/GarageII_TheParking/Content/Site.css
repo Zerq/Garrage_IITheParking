@@ -5,6 +5,21 @@
     color:lightgray
 }
 
+.jumbotron
+{
+    color:red;
+    font-family:'Showcard Gothic'
+}
+
+.gothic
+{
+    color:red;
+    font-family:'Showcard Gothic';
+    font-weight: 400
+}
+
+
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

@@ -28,8 +28,7 @@ namespace GarageII_TheParking.Models {
         [DisplayName("Model:")]
         public string Brand { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm'}")]
-
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
         [DisplayName("Parkerad:")]
         public DateTime? ParkedDate { get; set; }
 

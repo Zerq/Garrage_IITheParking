@@ -43,13 +43,18 @@ max-width: 120px
     font-weight: bolder
 }
 
-.PageUI span {
+.PageUI span a {
 font-weight:normal;
 color:blue;
+text-decoration:none;
 }
 
 
-.PageUI span.ActivePage {
+.PageUI .ActivePage a {
 font-weight:bolder;
-color:black;
+color:white;
+  text-decoration:none;
+}
+    .PageUI span a:hover {    
+    text-decoration:underline;
 }

@@ -13,7 +13,7 @@
     Path.GetFileName(Request.CurrentExecutionFilePath.ToLower());
 }
 
-<h2>Park</h2>
+<h2>Parkera</h2>
 
 
 @using (Html.BeginForm()) 
@@ -22,7 +22,7 @@
     @Html.HiddenFor(n=> n.Vehicle.Id)
 
     <div class="form-horizontal">
-        <h4>Vehicle</h4>
+        <h4>Fordon</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -98,7 +98,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Tillbaka till listan", "Index")
 </div>
 
 @section Scripts {

@@ -11,7 +11,36 @@ namespace GarageII_TheParking.Models.ViewModels {
             public List<T> Content { get; set; }
             public int PageCount { get; set; }
             public int CurrentPage { get; set; }
+            public string SearchString { get; set; } = null;
+            public string SearchProperty { get; set; } = null;
+            public string orderbyProperty { get; set; } = null;
+            public bool IsDescending { get; set; } = false;
         }
+
+        public PageResult GetResult(PageResult result) {
+            if (result == null) {
+                result = new Page<T>.PageResult();
+            }
+
+            if (result.SearchString == null) {
+                if (result.orderbyProperty == null) {
+                    result = this.GetPage(result.CurrentPage);
+                } else {
+                    result = this.GetPage(result.CurrentPage, result.orderbyProperty, result.IsDescending);
+                }
+
+            } else {
+
+                if (result.orderbyProperty == null) {
+                    result = this.GetPage(result.CurrentPage, result.SearchString, result.SearchProperty);
+                } else {
+                    result = this.GetPage(result.CurrentPage, result.orderbyProperty, result.IsDescending, result.SearchString, result.SearchProperty);
+
+                }
+            }
+            return result;
+        }
+
         public Page(IEnumerable<T> source, int pageSize, Tuple<string, bool,   
             Func<IEnumerable<T>, IEnumerable<T>>>[] orderParams ,
             Tuple<string, Func<string, IEnumerable<T>, IEnumerable<T>>>[]  searchParams) {

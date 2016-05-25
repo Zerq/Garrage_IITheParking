@@ -10,15 +10,13 @@ using GarageII_TheParking.DataAccessLayer;
 using GarageII_TheParking.Models;
 using GarageII_TheParking.Models.ViewModels;
 
-namespace GarageII_TheParking.Controllers
-{
-    public class MembersController : Controller
-    {
+namespace GarageII_TheParking.Controllers {
+    public class MembersController : Controller {
         private Context db = new Context();
         private Page<Member> Page;
 
         public MembersController() {
-            Page = new Page<Member>(db.Members, 10, new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>[] {
+            Page = new Page<Member>(db.Members, 4, new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>[] {
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",false,n=> n.OrderBy(o=> o.Name)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",true,n=> n.OrderByDescending(o=> o.Name)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("LastName",false,n=> n.OrderBy(o=> o.LastName)),
@@ -32,56 +30,42 @@ namespace GarageII_TheParking.Controllers
                   new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("LastName",(search,list)=> list.Where(n=> n.LastName.Contains(search))),
                   new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",(search,list)=> list.Where(n=> n.PersonIdNumber.Contains(search))),
                   new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",(search,list)=> list.Where(n=> n.PhoneNr.Contains(search))),
-                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("All",(search,list)=> list.Where(n=> n.PhoneNr.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("All",(search,list)=> {
+
+                      return list.Where(n=>
+                      n.Address.Contains(search) ||
+                      n.LastName.Contains(search) ||
+                      n.Name.Contains(search) ||
+                      n.PersonIdNumber.Contains(search) ||
+                      n.PhoneNr.Contains(search)
+                      );
+
+                      }),
 
             });
         }
 
 
         // GET: Members
-        public ActionResult Index(int pageNr = 0, string search = null,string searchProperty=null, string orderby=null, bool isDesc= false)
-        {
-            Page<Member>.PageResult result = null;
-
-            if (search == null) {
-                if (orderby == null) {
-                    result = this.Page.GetPage(pageNr);
-                } else {
-                    result = this.Page.GetPage(pageNr, orderby, isDesc);
-                }
-
-            } else {
-
-                if (orderby == null) {
-                    result = this.Page.GetPage(pageNr, search, searchProperty);
-                } else {
-                    result = this.Page.GetPage(pageNr, orderby, isDesc, search, searchProperty);
-
-                }
-            }    
-
- 
+        public ActionResult Index(Page<Member>.PageResult result = null) {
+            result = Page.GetResult(result);
             return View(result);
         }
 
         // GET: Members/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(Guid? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Member member = db.Members.Find(id);
-            if (member == null)
-            {
+            if (member == null) {
                 return HttpNotFound();
             }
             return View(member);
         }
 
         // GET: Members/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             return View();
         }
 
@@ -90,10 +74,8 @@ namespace GarageII_TheParking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,LastName,PersonIdNumber,PhoneNr,Address")] Member member)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "Id,Name,LastName,PersonIdNumber,PhoneNr,Address")] Member member) {
+            if (ModelState.IsValid) {
                 member.Id = Guid.NewGuid();
                 db.Members.Add(member);
                 db.SaveChanges();
@@ -104,15 +86,12 @@ namespace GarageII_TheParking.Controllers
         }
 
         // GET: Members/Edit/5
-        public ActionResult Edit(Guid? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(Guid? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Member member = db.Members.Find(id);
-            if (member == null)
-            {
+            if (member == null) {
                 return HttpNotFound();
             }
             return View(member);
@@ -123,10 +102,8 @@ namespace GarageII_TheParking.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,LastName,PersonIdNumber,PhoneNr,Address")] Member member)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "Id,Name,LastName,PersonIdNumber,PhoneNr,Address")] Member member) {
+            if (ModelState.IsValid) {
                 db.Entry(member).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -135,15 +112,12 @@ namespace GarageII_TheParking.Controllers
         }
 
         // GET: Members/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(Guid? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Member member = db.Members.Find(id);
-            if (member == null)
-            {
+            if (member == null) {
                 return HttpNotFound();
             }
             return View(member);
@@ -152,18 +126,15 @@ namespace GarageII_TheParking.Controllers
         // POST: Members/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
+        public ActionResult DeleteConfirmed(Guid id) {
             Member member = db.Members.Find(id);
             db.Members.Remove(member);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);

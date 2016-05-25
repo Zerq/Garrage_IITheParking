@@ -17,7 +17,7 @@ namespace GarageII_TheParking.Handler {
 
             Vehicle vehicle = db.Vehicle.SingleOrDefault( s => s.Id == model.VehicleId);
             Member collector = db.Members.SingleOrDefault(m => m.Id == model.CollectorId);
-
+            //null check vehicle later!
             if (vehicle.PersonWhoParkedVechicle == collector) {
                 if (vehicle != null) {
                     db.Vehicle.Remove(vehicle);
@@ -54,7 +54,11 @@ namespace GarageII_TheParking.Handler {
 
         public List<Vehicle> ListVehicles(Garage garage)
         {
-            return db.Vehicle.Where(n => n.GarageId == garage.Id).ToList();
+            db.Configuration.LazyLoadingEnabled = false;
+            var x = db.Vehicle.Where(n => n.GarageId == garage.Id).ToList();
+            return x;
+
+
         }
 
         public  Receipt Park(Vehicle vehicle, TimeSpan amountTimePaidFor)
@@ -80,6 +84,7 @@ namespace GarageII_TheParking.Handler {
             TimeSpan amountTimeParked = receipt.TimeWhenPaidParkingTimeExpires.Subtract(receipt.StartTime);
             receipt.TotalCost = Convert.ToInt32(receipt.CostPerHour * amountTimeParked.TotalHours);
 
+            db.Entry(vehicle.PersonWhoParkedVechicle).State = EntityState.Modified;
             db.Vehicle.Add(vehicle);
             db.SaveChanges();
             
@@ -96,7 +101,10 @@ namespace GarageII_TheParking.Handler {
         // få ut ett kvitto 
 
         public  Vehicle GetDetails(Guid? Key) {
-            return db.Vehicle.Single(n => n.Id  == Key);
+            db.Configuration.LazyLoadingEnabled = false;
+            var vehicle = db.Vehicle.Single(n => n.Id == Key);
+       
+            return vehicle;
         }
 
    

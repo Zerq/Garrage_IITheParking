@@ -11,6 +11,9 @@
 <table class="table">
     <tr>
         <th>
+            person som parkerade
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Color)
         </th>
         <th>
@@ -38,6 +41,9 @@
         
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => modelItem.PersonWhoParkedVechicle.Name) @Html.DisplayFor(modelItem => modelItem.PersonWhoParkedVechicle.LastName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => modelItem.Color)
             </td>
             <td>
@@ -49,6 +55,8 @@
             <td>
                     @Html.DisplayFor(modelItem => modelItem.WheelCount)
                 </td>
+
+ 
                 <td>
                     @Html.DisplayFor(modelItem => modelItem.Brand)
                 </td>

@@ -17,6 +17,8 @@ namespace GarageII_TheParking.Controllers {
 
         public MembersController() {
             Page = new Page<Member>(db.Members, 4, new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>[] {
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Address",false,n=> n.OrderBy(o=> o.Address)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Address",true,n=> n.OrderByDescending(o=> o.Address)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",false,n=> n.OrderBy(o=> o.Name)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",true,n=> n.OrderByDescending(o=> o.Name)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("LastName",false,n=> n.OrderBy(o=> o.LastName)),
@@ -26,16 +28,17 @@ namespace GarageII_TheParking.Controllers {
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",false,n=> n.OrderBy(o=> o.PhoneNr)),
                 new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",true,n=> n.OrderByDescending(o=> o.PhoneNr)),
             }, new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>[] {
-                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("Name",(search,list)=> list.Where(n=> n.Name.Contains(search))),
-                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("LastName",(search,list)=> list.Where(n=> n.LastName.Contains(search))),
-                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",(search,list)=> list.Where(n=> n.PersonIdNumber.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("Address",(search,list)=> list.Where(n=> n.Address.ToLower().Contains(search.ToLower() ))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("Name",(search,list)=> list.Where(n=> n.Name.ToLower().Contains(search.ToLower() ))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("LastName",(search,list)=> list.Where(n=> n.LastName.ToLower().Contains(search.ToLower()))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",(search,list)=> list.Where(n=> n.PersonIdNumber.ToLower().Contains(search.ToLower()))),
                   new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",(search,list)=> list.Where(n=> n.PhoneNr.Contains(search))),
-                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("All",(search,list)=> {
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("All",(search ,list)=> {
 
                       return list.Where(n=>
-                      n.Address.Contains(search) ||
-                      n.LastName.Contains(search) ||
-                      n.Name.Contains(search) ||
+                      n.Address.ToLower().Contains(search.ToLower()) ||
+                      n.LastName.ToLower().Contains(search.ToLower()) ||
+                      n.Name.ToLower().Contains(search.ToLower()) ||
                       n.PersonIdNumber.Contains(search) ||
                       n.PhoneNr.Contains(search)
                       );

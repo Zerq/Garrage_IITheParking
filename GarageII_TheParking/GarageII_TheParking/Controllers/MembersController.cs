@@ -17,15 +17,19 @@ namespace GarageII_TheParking.Controllers
         private Context db = new Context();
 
         // GET: Members
-        public ActionResult Index(Page<Member> page = null)
+        public ActionResult Index(int page = 0, string search = null,string Column=null, string orderby=null, bool isDesc= false)
         {
             var result = db.Members;
 
-            if (page.PageSize == 0){
-                page = new Page<Member>(3, 0, db.Members);
-            } 
 
-            return View(page);
+
+
+           
+
+            result.Skip(page).Take(10);//hard coded to <Take parameter> per page
+            
+
+            return View(result.ToString());
         }
 
         // GET: Members/Details/5

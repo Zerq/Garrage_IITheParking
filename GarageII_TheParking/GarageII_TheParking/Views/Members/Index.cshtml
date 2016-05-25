@@ -1,4 +1,4 @@
-﻿@model GarageII_TheParking.Models.ViewModels.Page<GarageII_TheParking.Models.Member>
+﻿@model GarageII_TheParking.Models.ViewModels.Page<GarageII_TheParking.Models.Member>.PageResult
 
 @{
     var memberExample = new GarageII_TheParking.Models.Member();
@@ -30,7 +30,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.ItemsOnPage) {
+@foreach (var item in Model.Content) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -58,8 +58,8 @@
 </table>
 
 <div class="PageUI">
-    @for (int i = 0; i < Model.NumberOfPages; i++) {
-        if (Model.CurrentPageNumber == i) {
+    @for (int i = 0; i < Model.PageCount; i++) {
+        if (Model.CurrentPage == i) {
             <span id="ActivePage">@i</span>
         } else {
             <span>@i</span>

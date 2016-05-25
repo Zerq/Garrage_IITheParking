@@ -15,21 +15,53 @@ namespace GarageII_TheParking.Controllers
     public class MembersController : Controller
     {
         private Context db = new Context();
+        private Page<Member> Page;
+
+        public MembersController() {
+            Page = new Page<Member>(db.Members, 10, new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>[] {
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",false,n=> n.OrderBy(o=> o.Name)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("Name",true,n=> n.OrderByDescending(o=> o.Name)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("LastName",false,n=> n.OrderBy(o=> o.LastName)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("LastName",true,n=> n.OrderByDescending(o=> o.LastName)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",false,n=> n.OrderBy(o=> o.PersonIdNumber)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",true,n=> n.OrderByDescending(o=> o.PersonIdNumber)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",false,n=> n.OrderBy(o=> o.PhoneNr)),
+                new Tuple<string, bool, Func<IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",true,n=> n.OrderByDescending(o=> o.PhoneNr)),
+            }, new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>[] {
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("Name",(search,list)=> list.Where(n=> n.Name.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("LastName",(search,list)=> list.Where(n=> n.LastName.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PersonIdNumber",(search,list)=> list.Where(n=> n.PersonIdNumber.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("PhoneNr",(search,list)=> list.Where(n=> n.PhoneNr.Contains(search))),
+                  new Tuple<string, Func<string, IEnumerable<Member>, IEnumerable<Member>>>("All",(search,list)=> list.Where(n=> n.PhoneNr.Contains(search))),
+
+            });
+        }
+
 
         // GET: Members
-        public ActionResult Index(int page = 0, string search = null,string Column=null, string orderby=null, bool isDesc= false)
+        public ActionResult Index(int pageNr = 0, string search = null,string searchProperty=null, string orderby=null, bool isDesc= false)
         {
-            var result = db.Members;
+            Page<Member>.PageResult result = null;
 
+            if (search == null) {
+                if (orderby == null) {
+                    result = this.Page.GetPage(pageNr);
+                } else {
+                    result = this.Page.GetPage(pageNr, orderby, isDesc);
+                }
 
+            } else {
 
+                if (orderby == null) {
+                    result = this.Page.GetPage(pageNr, search, searchProperty);
+                } else {
+                    result = this.Page.GetPage(pageNr, orderby, isDesc, search, searchProperty);
 
-           
+                }
+            }    
 
-            result.Skip(page).Take(10);//hard coded to <Take parameter> per page
-            
-
-            return View(result.ToString());
+ 
+            return View(result);
         }
 
         // GET: Members/Details/5

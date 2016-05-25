@@ -9,7 +9,7 @@ using System.Web;
 namespace GarageII_TheParking.Models {
     // Michael testar att kommentera från GitHub
 
-    [System.Web.Mvc.Bind(Include = "Id, Color, RegistrationNumber, WheelCount, Brand, ParkedDate, ExpectedParkOutDate, ParkOutDate", Exclude = "PersonWhoParkedVechicle,Type")]
+    [System.Web.Mvc.Bind(Include = "Id, Color, RegistrationNumber, WheelCount, Brand, ParkedDate, ExpectedParkOutDate, ParkOutDate,PersonWhoParkedVechicle,Type", Exclude = "")]
     public class Vehicle {
         public Guid Id { get; set; }
 
@@ -29,6 +29,7 @@ namespace GarageII_TheParking.Models {
         public string Brand { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
+
         [DisplayName("Parkerad:")]
         public DateTime? ParkedDate { get; set; }
 

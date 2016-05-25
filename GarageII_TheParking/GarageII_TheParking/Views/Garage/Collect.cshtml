@@ -7,5 +7,10 @@
     @Html.AntiForgeryToken()
 @Html.HiddenFor(n => n.VehicleId)
 @Html.DropDownListFor(n => n.CollectorId, Model.PersonDropDownOptions);
+
 <input type="submit" value="Select" />
+
+    if (Model.Error != null) {
+        <div style="color:red"> @Html.DisplayFor(n => n.Error)</div>
+    }
 }

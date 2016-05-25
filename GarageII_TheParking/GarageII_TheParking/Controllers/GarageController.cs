@@ -76,10 +76,11 @@ namespace GarageII_TheParking.Controllers {
         }
 
         [HttpGet]
-        public ActionResult Collect(Guid id) {
+        public ActionResult Collect(Guid id, string error=null) {
             // var receipt = handler.Collect(id);
             return View(new CollectViewModel() {
                 VehicleId = id,
+                 Error = error,
                 PersonDropDownOptions = handler.GetAllMembers().Select(n => new System.Web.Mvc.SelectListItem() { Text = $"{n.Name} {n.LastName}", Value = n.Id.ToString() })
             });
         }
@@ -92,7 +93,8 @@ namespace GarageII_TheParking.Controllers {
                 if (receipt != null) {
                     return View("Receipt", receipt);
                 } else {
-                    return View(model.VehicleId);
+
+                    return Collect(model.VehicleId,"Not the person who parked the car!");
                 }
 
             } else {

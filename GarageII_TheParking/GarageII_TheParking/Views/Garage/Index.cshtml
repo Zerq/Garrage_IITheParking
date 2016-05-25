@@ -10,7 +10,7 @@
 
 
 <p>
-    @Html.ActionLink("Park", "Park")
+    @Html.ActionLink("Parkera", "Park")
 </p>
 <table class="table">
     @{ 
@@ -46,9 +46,9 @@
             @Html.DisplayFor(modelItem => item.Type.Name)
         </td>
         <td>
-            @if (item.PersonWhoParkedVechicle != null) {
+
             @Html.DisplayFor(modelItem => $"{item.PersonWhoParkedVechicle.Name} {item.PersonWhoParkedVechicle.LastName}")
-            }
+            
         </td>
         <td>
             @Html.ActionLink("Collect", "Collect", new { id = item.Id})

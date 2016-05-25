@@ -1,6 +1,7 @@
-﻿@model IEnumerable<GarageII_TheParking.Models.Member>
+﻿@model GarageII_TheParking.Models.ViewModels.Page<GarageII_TheParking.Models.Member>
 
 @{
+    var memberExample = new GarageII_TheParking.Models.Member();
     ViewBag.Title = "Index";
 }
 
@@ -12,24 +13,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => memberExample.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => memberExample.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PersonIdNumber)
+            @Html.DisplayNameFor(model => memberExample.PersonIdNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNr)
+            @Html.DisplayNameFor(model => memberExample.PhoneNr)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => memberExample.Address)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.ItemsOnPage) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -55,3 +56,14 @@
 }
 
 </table>
+
+<div class="PageUI">
+    @for (int i = 0; i < Model.NumberOfPages; i++) {
+        if (Model.CurrentPageNumber == i) {
+            <span id="ActivePage">@i</span>
+        } else {
+            <span>@i</span>
+        }
+
+    }
+</div>

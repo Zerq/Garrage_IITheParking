@@ -42,3 +42,14 @@ max-width: 120px
     color: royalblue !important;
     font-weight: bolder
 }
+
+.PageUI span {
+font-weight:normal;
+color:blue;
+}
+
+
+.PageUI span.ActivePage {
+font-weight:bolder;
+color:black;
+}

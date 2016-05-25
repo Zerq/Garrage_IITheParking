@@ -21,22 +21,11 @@ namespace GarageII_TheParking.Controllers
         {
             var result = db.Members;
 
-            if (page == null) {
-                page = new Page<Member>() {
-                    CurrentPageNumber = 0
-                };
-            }
+            if (page.PageSize == 0){
+                page = new Page<Member>(3, 0, db.Members);
+            } 
 
-            if (String.IsNullOrEmpty(page.SearchString)) {
-
-            } else {
-
-
-            }
-
-            Page.ItemsOnPage = db.Members.Skip(offset).Take(25).ToList();
-            Page.CurrentPageNumber = offset;
-            return View();
+            return View(page);
         }
 
         // GET: Members/Details/5

@@ -28,7 +28,23 @@ namespace GarageII_TheParking.Migrations
             //https://cdn0.vox-cdn.com/thumbor/dUhFuohIxvh-F4v3EKsjY3XSWIU=/cdn0.vox-cdn.com/uploads/chorus_asset/file/3893454/win10_skype_320x320.0.gif
 
             context.VehicleTypes.AddOrUpdate(n => n.Id, car, Buss, BearCavalry, Airoplane, Pogostick, MotorCycle, Boat, NinjaCatRidingADinosaureWithGrabyClaws);
-         
+
+
+
+            context.Members.AddOrUpdate(n => n.Id,
+new Models.Member() { Id= new Guid("BA44C3BF-5034-4019-80F6-F7451E803517"), Name="Zog", LastName="McTrog", Address="Zogway st11", PersonIdNumber="312313213", PhoneNr="43534535345" },
+new Models.Member() { Id = new Guid("BA44C3BF-5034-4019-80F6-F7451E803518"), Name = "Gog", LastName = "McTrog", Address = "Zogway st11", PersonIdNumber = "312313212", PhoneNr = "43534535346" },
+new Models.Member() { Id = new Guid("BA44C3BF-5034-4019-80F6-F7451E803519"), Name = "Trog", LastName = "McTrog", Address = "Zogway st11", PersonIdNumber = "312313211", PhoneNr = "43534535347" },
+
+new Models.Member() { Id = new Guid("BAA4C3BF-5034-4019-80F6-F7451E803519"), Name = "Reigl", LastName = "Bleimer", Address = "Scurp Rd5", PersonIdNumber = "312363213", PhoneNr = "43444535345" },
+new Models.Member() { Id = new Guid("BA54C3BF-5034-4019-80F6-F7451E803529"), Name = "Zolph", LastName = "Bleimer", Address = "Scurp Rd7a", PersonIdNumber = "318313213", PhoneNr = "439994535345" },
+new Models.Member() { Id = new Guid("BA74C3BF-5034-4019-80F6-F7451E803539"), Name = "Igrid", LastName = "Bleimer", Address = "Blurging St 15", PersonIdNumber = "312313113", PhoneNr = "43500035345" },
+
+new Models.Member() { Id = new Guid("BA44C3BF-5034-4019-80F6-F74515803519"), Name = "Zoibl", LastName = "Beignr", Address = "Wobling st11", PersonIdNumber = "382313213", PhoneNr =  "43000535345" },
+new Models.Member() { Id = new Guid("BA44C3BF-5034-4019-80F6-F74513803519"), Name = "Birmac", LastName = "Beignr", Address = "Wobling st11", PersonIdNumber = "882313213", PhoneNr = "41004535345" },
+new Models.Member() { Id = new Guid("BA44C3BF-5034-4019-80F6-F74511803519"), Name = "Dortph", LastName = "Beignr", Address = "Wobling st11", PersonIdNumber = "399713213", PhoneNr = "40003535345" }
+);
+
         }
     }
 }

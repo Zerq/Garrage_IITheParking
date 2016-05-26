@@ -12,6 +12,6 @@ namespace GarageII_TheParking.Models {
         public string PersonIdNumber { get; set; }
         public string PhoneNr { get; set; }
         public string Address { get; set; }
-        public List<Vehicle> ParkedVehicle { get; set; }
+        public virtual List<Vehicle> ParkedVehicle { get; set; }
     }
 }

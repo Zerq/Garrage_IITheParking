@@ -41,10 +41,10 @@ namespace GarageII_TheParking.Models {
 
 
         [DisplayName("Typ av fordon:")]
-        public VehicleType Type { get; set; }
+        public virtual VehicleType Type { get; set; }
 
         [DisplayName("Person som parkerade bilen:")]
-        public Member PersonWhoParkedVechicle { get; set; }
+        public virtual Member PersonWhoParkedVechicle { get; set; }
     }
 
 
